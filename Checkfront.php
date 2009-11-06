@@ -6,7 +6,7 @@
 class Checkfront {
 	
 	const API_VERSION = '0.5';
-	const PLUGIN_VERSION = '0.7';
+	const PLUGIN_VERSION = '0.7.1';
 
 	private $app_id = 'API';
 	public $host; 
