@@ -1,5 +1,5 @@
 <?php
-if($_POST['checkfront_host']) {
+if(isset($_POST['checkfront_host'])) {
 	if($host = $Checkfront->valid_host($_POST['checkfront_host'])) {
 		update_option('checkfront_host',$host);
 		$Checkfront->host = $host;
@@ -10,7 +10,7 @@ if($_POST['checkfront_host']) {
 }
 ?>
 <?php
-if($cf_msg){?>
+if(isset($cf_msg)){?>
 <div style="background-color: rgb(255, 251, 204);" id="message" class="updated fade"><p><strong><?php echo $cf_msg?></strong></p></div>
 <?}?>
 <form method="post">
@@ -46,7 +46,7 @@ Checkfront is an online booking platform that allows businesses to manage their 
 <hr style="border:0; clear: both">
 <h3>Get Started</h3>
 <ol>
-<li>Create your <a href="http://www.checkfront.com/start/" target="_blank">Checkfront accont</a>, setup your inventory, and configure your account and e-commerce.</li>
+<li><a href="http://www.checkfront.com/start/" target="_blank">Create your free Checkfront accont</a>, setup your inventory, and configure your account and e-commerce.</li>
 <li>Supply your Checkfront url in the API Setup above.</li>
 <li>Enable the <a href="widgets.php">Checkfront Booking Search Widget</a></li>
 <li>Create a <a href="post-new.php">new Wordpress post</a> and enbed the booking system with the shortcode <code>[checkfront booking="embed"]</code></li>

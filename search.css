@@ -1,0 +1,194 @@
+#CF_search fieldset { border: none; }
+#CF_search legend {
+    padding: 0 2px;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+#CF_search label {
+    float: left;
+    width: 12em;
+    line-height: 1.1;
+    display: inline-block;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    padding-right: .5em;
+    line-height: 1.5em;
+}
+
+#CF_search label.none {
+    font-weight: normal;
+}
+#CF_search fieldset ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#CF_search fieldset li.required input{
+    background: #fffcd6 url('/images/required.png') no-repeat right center;
+}
+
+#CF_search fieldset ol li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#CF_search em {
+    font-size: .9em;
+    font-weight: normal;
+    font-style: normal;
+    clear: both;
+    display: block;
+    color: #555;
+    padding-top: .2em;
+    padding-left: 16.6em;
+}
+
+#CF_search .date label {
+}
+#CF_search .date div {
+    vertical-align:middle;
+    margin:  0 1em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 0;
+}
+
+#CF_search div input[type="text"]{
+	background: 
+	border:0;
+	width: 90%;
+	vertical-align:middle;
+	clear: none;
+	display: inline;
+	-moz-border-radius-bottomleft: 3px;
+	-moz-border-radius-topleft: 3px;
+	padding: 3px;
+}
+
+#CF_search .date div input[type=image]{
+	vertical-align:middle;
+	display: inline-block;
+	width: 16px;
+	padding: 3px;
+}
+
+#CF_search .date div input[type=image]:hover{
+	background-color: #efefef;
+}
+
+/* Some resets for compatibility with existing CSS */
+#CF_search .date_selector, #CF_search .date_selector * {
+	width: auto;
+	height: auto;
+	border: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	text-decoration: none;
+}
+#CF_search .date_selector {
+	background: #F2F2F2;
+	border: 1px solid #bbb;
+	padding: 5px;
+	margin: -1px 0 0 0;
+	position: absolute;
+	z-index: 100000;
+	display: none;
+}
+#CF_search .date_selector_ieframe {
+	position: absolute;
+	z-index: 99999;
+	display: none;
+}
+#CF_search .date_selector .nav {
+	width: 17.5em; /* 7 * 2.5em */
+}
+#CF_search .date_selector #CF_search .month_nav, #CF_search .date_selector .year_nav {
+  margin: 0 0 3px 0;
+  padding: 0;
+  display: block;
+  position: relative;
+  text-align: center;
+ }
+#CF_search .date_selector .month_nav {
+  float: left;
+  width: 55%;
+ }
+#CF_search .date_selector .year_nav {
+	  float: right;
+	  width: 35%;
+	  margin-right: -8px; /* Compensates for cell borders */
+  }
+#CF_search .date_selector .month_name, #CF_search .date_selector .year_name {
+	  font-weight: bold;
+	  line-height: 20px;
+  }
+#CF_search .date_selector .button {
+	  display: block;
+	  position: absolute;
+	  top: 0;
+	  width: 18px;
+	  height: 18px;
+	  line-height: 17px;
+	  font-weight: bold;
+	  color: #003C78;
+	  text-align: center;
+	  font-size: 120%;
+	  overflow: hidden;
+	  border: 1px solid #F2F2F2;
+  }
+#CF_search .date_selector .button:hover, #CF_search .date_selector .button.hover {
+	  background: none;
+	  color: #003C78;
+	  cursor: pointer;
+	  border-color: #ccc;
+}
+#CF_search .date_selector .prev {
+	left: 0;
+}
+#CF_search .date_selector .next {
+	  right: 0;
+}
+#CF_search .date_selector table {
+	  border-spacing: 0;
+	  border-collapse: collapse;
+	  clear: both;
+}
+#CF_search .date_selector th, .date_selector td {
+	  width: 2.5em;
+	  height: 2em;
+	  padding: 0;
+	  text-align: center;
+	  color: black;
+}
+#CF_search .date_selector td {
+	border: 1px solid #ccc;
+	line-height: 2em;
+	text-align: center;
+	white-space: nowrap;
+	color: #003C78;
+	background: white;
+}
+#CF_search .date_selector td.today {
+	background: #FFFEB3;
+}
+#CF_search .date_selector td.unselected_month {
+	color: #ccc;
+}
+#CF_search .date_selector td.selectable_day {
+	cursor: pointer;
+}
+#CF_search .date_selector td.selected {
+	background: #D8DFE5;
+	font-weight: bold;
+}
+#CF_search .date_selector td.selectable_day:hover, #CF_search .date_selector td.selectable_day.hover {
+	background: #003C78;
+	color: white;
+}
+

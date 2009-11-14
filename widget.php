@@ -1,6 +1,6 @@
-<form class="checkfront" action="/book/">
+<form id="CF_search" action="<?php echo $data['checkfront_search_path']?>">
 <fieldset>
-<legend>Booking</legend>
+<legend><?php echo $data['checkfront_widget_title']?></legend>
 <ol>
     <li class="date">
     <strong for="date">Date</strong><input id="CF_date" name="CF_date" value="<?php echo date($Checkfront->date_format,strtotime($Checkfront->query['date']))?>" type="text"style="width:140px">

@@ -4,7 +4,7 @@ Contributors: checkfront
 Stable tag: trunk
 Tags: Booking, Reservation, Calendar, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments
 Requires at least: 2.5
-Tested up to: 2.8.5
+Tested up to: 2.8.6
 
 A plugin that connects your Wordpress blog to the Checkfront™ Booking platform.
 
@@ -28,9 +28,9 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 * [Privacy Policy](http://www.checkfront.com/legal/privacy)
 * [Find us on twitter](http://twitter.com/checkfront)
 
-== Requirements ==
+= Requirements =
 
-A Checkfront account -- you can create one for free at [https://www.checkfront.com/start/](https://www.checkfront.com/start/ "Checkfront Sign-up") --  and Wordpress 2.5 or greater.
+A Checkfront account -- you can create one *for free* at [https://www.checkfront.com/start/](https://www.checkfront.com/start/ "Checkfront Sign-up") --  and Wordpress 2.5 or greater.
 
 == Installation ==
 
@@ -51,5 +51,10 @@ A Checkfront account -- you can create one for free at [https://www.checkfront.c
 
 == Changelog == 
 
+* *Nov 13 2009*: 
+ * Made compatible with wordpress 2.5+.  
+ * No longer loads remote javascript site wide, only on an embedded booking page.
+ * Improved warning messages and admin settings.
+ * Moved admin settings to plugin menu.
 * *Nov 6 2009*: Updated readme, small IE fix.
 * *Nov 5 2009*: Initial public beta.

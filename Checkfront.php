@@ -6,24 +6,22 @@
 class Checkfront {
 	
 	const API_VERSION = '0.5';
-	const PLUGIN_VERSION = '0.7.1';
+	const PLUGIN_VERSION = '0.7.9';
 
-	private $app_id = 'API';
-	public $host; 
+	public $app_id = 'CHECKFRONT_WP-AER124';
+	public $host= NULL; 
 	public $date_format;
 	public $date;
 	private $session_id;
+	public $adults;
+	public $duration;
 
 	function __construct($host=NULL) {
 
 		$this->set_host($host);
-		if($app_id) {
-			$this->app_id = $app_id;
-		}
-
-		$this->date = $this->date($_GET['CF_date']);
-		$this->adults = $this->adults($_GET['CF_adults']);
-		$this->duration = $this->adults($_GET['CF_duration']);
+		if(isset($_GET['CF_date'])) $this->date = $this->date($_GET['CF_date']);
+		if(isset($_GET['CF_adults'])) $this->adults = $this->adults($_GET['CF_adults']);
+		if(isset($_GET['CF_duration'])) $this->duration = $this->adults($_GET['CF_duration']);
 
 		$path = explode('/',dirname(__FILE__));
 
@@ -63,9 +61,29 @@ class Checkfront {
 
 	function set_host($host) {
 		$this->host = $host;
-		/* ssl is not required for basic inventory requests */
-		$scheme = ($ssl) ? 'https' : 'http';
+		$scheme = (isset($_SERVER['HTTPS'])) ? 'https' : 'http';
 		$this->url = "{$scheme}://{$this->host}";
 		$this->api_url = "{$this->url}/api/" . CHECKFRONT::API_VERSION;
 	}
+
+	function error_config() {
+		if(is_admin()) {
+			return '<p style="padding: .5em; border: solid 1px red;">Please configure the Checkfront plugin in the Wordpress Admin.</p>';
+		} else {
+			return '<p style="padding: .5em; border: solid 1px red;">Bookings not yet available here.</p>';
+		}
+	}
+
+	function embed_booking() {
+		if(empty($this->host)) return $this->error_config();
+
+		if(isset($_GET['CF_id'])) {
+			return checkfront_invoice($id);
+		} else {
+			include(dirname(__FILE__).'/booking.php');
+		}
+		return $html;
+	}
+
+
 }
