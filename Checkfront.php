@@ -6,7 +6,7 @@
 class Checkfront {
 	
 	const API_VERSION = '0.5';
-	const PLUGIN_VERSION = '0.7.9';
+	const PLUGIN_VERSION = '0.8';
 
 	public $app_id = 'CHECKFRONT_WP-AER124';
 	public $host= NULL; 

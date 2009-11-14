@@ -3,7 +3,7 @@
 Plugin Name: Checkfront Booking
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects wordpress to the Checkfront Online Booking and Availablity platform.  Checkfront is currently in Beta. Updates of this plugin may occur regularly --  please keep it up to date.
-Version: 0.7.9
+Version: 0.8
 Author: Checkfront Inc
 Author URI: http://www.checkfront.com/
 Copyright: 2009 Checkfront Inc 
@@ -84,10 +84,14 @@ function checkfront_widget_options() {
 ?>
   <p><label>Title<input name="checkfront_widget_title" type="text" value="<?php echo $data['checkfront_widget_title']; ?>" /></label><em style="color: #888">Display title of widget</em></p>
   <p><label>Path<input name="checkfront_search_path" type="text" value="<?php echo $data['checkfront_search_path']; ?>" /></label><em style="color:#888">Path to your booking page</em></p>
+  <p><label>Duration Title<input name="checkfront_widget_duration_title" type="text" value="<?php echo $data['checkfront_widget_duration_title']; ?>" /></label><br /><em style="color:#888">Leave blank to hide</em></p>
+  <p><label>Default Duration<input name="checkfront_widget_default_duration" type="text" value="<?php echo $data['checkfront_widget_default_duration']; ?>" /></label><br /><em style="color:#888">Default duration</em></p>
 <?php
 	if (isset($_POST['checkfront_search_path'])){
 		$data['checkfront_search_path'] = attribute_escape($_POST['checkfront_search_path']);
 		$data['checkfront_widget_title'] = attribute_escape($_POST['checkfront_widget_title']);
+		$data['checkfront_widget_duration_title'] = attribute_escape($_POST['checkfront_widget_duration_title']);
+		$data['checkfront_widget_default_duration'] = attribute_escape($_POST['checkfront_widget_default_duration']);
 		update_option('checkfront_widget', $data);
 	}
 
