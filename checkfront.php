@@ -3,12 +3,95 @@
 Plugin Name: Checkfront Booking
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects wordpress to the Checkfront Online Booking and Availablity platform.  Checkfront is currently in Beta. Updates of this plugin may occur regularly --  please keep it up to date.
-Version: 0.8
+Version: 0.8.2
 Author: Checkfront Inc
 Author URI: http://www.checkfront.com/
 Copyright: 2009 Checkfront Inc 
 */
 
+if ( ! defined( 'WP_PLUGIN_URL' ) ) define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
+if ( ! defined( 'WP_PLUGIN_DIR' ) ) define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
+
+class Checkfront {
+	
+	const API_VERSION = '0.8';
+	const PLUGIN_VERSION = '0.8.2';
+
+	public $app_id = 'CHECKFRONT_WP-AER124';
+	public $host= NULL; 
+	public $date_format;
+	public $date;
+	private $session_id;
+	public $adults;
+	public $duration;
+
+	function __construct($host=NULL) {
+
+		$this->set_host($host);
+		if(isset($_GET['CF_date'])) $this->date = $this->date($_GET['CF_date']);
+		if(isset($_GET['CF_adults'])) $this->adults = $this->adults($_GET['CF_adults']);
+		if(isset($_GET['CF_duration'])) $this->duration = $this->adults($_GET['CF_duration']);
+
+		}
+
+	function date($str) {
+		return ($str) ? date('Ymd',strtotime($str)): date('Ymd');
+	}
+
+	function duration($int) {
+		return ($int>0) ? $int : 3;
+	}
+
+	function adults($int=1) {
+		return ($int>0) ? $int : 2;
+	}
+
+	function valid_host($value) {
+		if(!preg_match('~^http://|https://~',$value)) $value = 'https://' . $value;
+		if($uri = parse_url($value)) {
+			if($uri['host']) {
+				$host= $uri['host'];
+			}
+		}
+		return $host;
+	}
+
+	function booking($data=array()) {
+		if($_GET['CF_slip']) {
+			foreach($_GET['CF_slip'] as $id=> $slip) {
+				setcookie('CF_slip[' . $id . ']',$slip,0,'/');
+			}
+		}
+    }
+
+	function set_host($host) {
+		$this->host = $host;
+		$this->url = "//{$this->host}";
+		$this->api_url = "{$this->url}/api/" . CHECKFRONT::API_VERSION;
+		$path = explode('/',dirname(__FILE__));
+		$dir = array_pop($path);
+		$this->plugin_url =  WP_PLUGIN_URL .'/' . $dir;
+	}
+
+	function error_config() {
+		if(is_admin()) {
+			return '<p style="padding: .5em; border: solid 1px red;">Please configure the Checkfront plugin in the Wordpress Admin.</p>';
+		} else {
+			return '<p style="padding: .5em; border: solid 1px red;">Bookings not yet available here.</p>';
+		}
+	}
+
+	function embed_booking() {
+		if(empty($this->host)) return $this->error_config();
+
+		if(isset($_GET['CF_id'])) {
+			return checkfront_invoice($_GET['CF_id']);
+		} else {
+			include(dirname(__FILE__).'/booking.php');
+		}
+		return $html;
+	}
+}
 
 //Shortcode [clean-conract parameter="value"]
 function checkfront_func($atts, $content=null) {
@@ -39,6 +122,7 @@ function checkfront($atts) {
 */
 function checkfront_conf() {
 	global $Checkfront;
+
 
 	if ( function_exists('add_submenu_page') ) {
 		add_submenu_page('plugins.php', __('Checkfront'), __('Checkfront'), 'manage_options', 'checkfront', 'checkfront_setup');
@@ -115,7 +199,7 @@ add_action('wp_head', 'checkfront_head');
 function checkfront_head() { 
 	global $post, $Checkfront;
 	if(!isset($Checkfront->host)) return;
-	if (strpos($post->post_content,'[checkfront')) {
+	if (stripos($post->post_content,'[checkfront')) {
 		print ' <script src="//' . $Checkfront->host . '/client/wp.js" type="text/javascript"></script>' ."\n";
 		print ' <link rel="stylesheet" href="//' . $Checkfront->host . '/client/wp.css" type="text/css" media="all" />' . "\n";
 
@@ -124,8 +208,8 @@ function checkfront_head() {
 	}
 
 	if(is_active_widget('checkfront_widget')) {
-		print ' <script src="' . $Checkfront->path . '/search.js" type="text/javascript"></script>' ."\n";
-		print ' <link rel="stylesheet" href="' . $Checkfront->path . '/search.css" type="text/css" media="all" />' . "\n";
+		print ' <script src="' . $Checkfront->plugin_url . '/search.js" type="text/javascript"></script>' ."\n";
+		print ' <link rel="stylesheet" href="' . $Checkfront->plugin_url. '/search.css" type="text/css" media="all" />' . "\n";
 	}	
 }
 
@@ -137,7 +221,6 @@ function checkfront_comments_template_filter($file) {
     return dirname(__FILE__).'/empty';
 }
 
-include_once('Checkfront.php');
 
 $Checkfront = new Checkfront(get_option('checkfront_host'));
 $Checkfront->query['date'] = $Checkfront->date(isset($_GET['CF_date']) ? $_GET['CF_date'] : NULL );

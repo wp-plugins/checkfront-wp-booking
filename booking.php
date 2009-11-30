@@ -19,6 +19,6 @@ if(isset($_COOKIE['CF_slip']) and count($_GET['CF_slip'])) {
 $html .= '<ul id="CF_tabs"></ul>';
 $html .= '<div id="CF_items"><strong id="CF_desc">Availability for: <span></span></strong>';
 $html .= '</div></form></div>';
-$html .= '<p id="CF_i"><a style="background: url(\'' . $this->path .'/icon.png\') left center no-repeat; padding: 5px 0 5px 20px; font-size: smaller;"  href="http://www.checkfront.com/">Online Bookings by Checkfront</a><!--' . $this->app_id . '--></p>';
+$html .= '<p id="CF_i"><a style="background: url(\'' . $this->plugin_url .'/icon.png\') left center no-repeat; padding: 5px 0 5px 18px; font-size: smaller; color: 555;"  href="http://www.checkfront.com/">Online Bookings by Checkfront</a><!--' . $this->app_id . '--></p>';
 return $html;
 ?>

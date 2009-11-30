@@ -3,9 +3,9 @@ if(isset($_POST['checkfront_host'])) {
 	if($host = $Checkfront->valid_host($_POST['checkfront_host'])) {
 		update_option('checkfront_host',$host);
 		$Checkfront->host = $host;
-	$cf_msg = "Connected!";
+		$cf_msg = "Connected!";
 	} else {
-	$cf_msg = "Invalid host!";
+		$cf_msg = "Invalid host!";
 	}
 }
 ?>
@@ -18,7 +18,7 @@ if(isset($cf_msg)){?>
 <input type="hidden" name="checkfront_settings" value="1">
 <div id="icon-options-general" class="icon32"><br /></div>
 <h2>Checkfront for WordPress</h2>
-<p ><a href="http://www.checkfront.com/"><img src="<?php echo $Checkfront->path?>/logo.png" style="float: left; padding-right: 1em; border:0;"></a>
+<p ><a href="http://www.checkfront.com/"><img src="<?php echo $Checkfront->plugin_url?>/logo.png" style="float: left; padding-right: 1em; border:0;"></a>
 Checkfront is an online booking platform that allows businesses to manage their inventories online, centralize reservations, process payments and get unified access to leading distribution channels.<br /><a href="http://www.checkfront.com" target="_blank">http://www.checkfront.com</a></p>
 </p>
 	<div class="metabox-holder meta-box-sortables pointer">
