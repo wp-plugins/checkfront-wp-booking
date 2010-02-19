@@ -4,9 +4,9 @@ Contributors: checkfront
 Stable tag: trunk
 Tags: Booking, Reservation, Calendar, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments
 Requires at least: 2.5
-Tested up to: 2.9
+Tested up to: 2.9.3
 
-A plugin that connects your Wordpress blog to the Checkfront™ Booking platform.
+A plugin that connects your Wordpress blog to the Checkfront Booking platform.
 
 == Description ==
 
@@ -50,6 +50,10 @@ A Checkfront account -- you can create one *for free* at [https://www.checkfront
 3. Admin
 
 == Changelog == 
+* *Deb 18 2010*:
+  * Moved to new 0.9 Checkfront API
+  * Now supports framed version of booking window should the theme interfere with the plugin
+  * Removed search widget: search functionality has been moved to main booking interface  - will reappear in another format.
 * *Nov 30 2009*: 
  * Improved compatibility fixes.  
 * *Nov 13 2009*: 
