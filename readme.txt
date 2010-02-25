@@ -50,7 +50,10 @@ A Checkfront account -- you can create one *for free* at [https://www.checkfront
 3. Admin
 
 == Changelog == 
-* *Deb 18 2010*:
+* *Feb 24 2010*:
+  * Updated screenshots
+  * Removed legacy invoice insert
+* *Feb 18 2010*:
   * Moved to new 0.9 Checkfront API
   * Now supports framed version of booking window should the theme interfere with the plugin
   * Removed search widget: search functionality has been moved to main booking interface  - will reappear in another format.

@@ -6,6 +6,6 @@ if(isset($_COOKIE['CF_slip']) and count($_GET['CF_slip'])) {
 		$html .= '<input type="hidden" name="CF_slip[' . $id . ']" value="' . $slip. '">';
 	}
 }
-$html .= '<a id="CF_id" class="' . $this->host . '" href="http://www.checkfront.com/">Online Bookings by Checkfront</a><!--' . $this->app_id . '--></p></div>';
+$html .= '<a id="CF_id" class="' . $this->host . '" href="http://www.checkfront.com/">Online Bookings by Checkfront</a></p></div>';
 return $html;
 ?>

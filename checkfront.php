@@ -3,7 +3,7 @@
 Plugin Name: Checkfront Booking
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects wordpress to the Checkfront Online Booking and Availablity platform.  
-Version: 0.9
+Version: 0.9.1
 Author: Checkfront Inc
 Author URI: http://www.checkfront.com/
 Copyright: 2008 - 2010 Checkfront Inc 
@@ -14,8 +14,8 @@ if ( ! defined( 'WP_PLUGIN_DIR' ) ) define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/
 
 class Checkfront {
 	
-	const API_VERSION = '0.9';
-	const PLUGIN_VERSION = '0.9';
+	const API_VERSION = '0.9.5';
+	const PLUGIN_VERSION = '0.9.1';
 
 	public $app_id = 'CHECKFRONT_WP';
 	public $host= NULL; 
@@ -75,12 +75,7 @@ class Checkfront {
 
 	function embed_booking() {
 		if(empty($this->host)) return $this->error_config();
-
-		if(isset($_GET['CF_invoice'])) {
-			return checkfront_invoice($_GET['CF_invoice']);
-		} else {
-			include(dirname(__FILE__).'/booking.php');
-		}
+		include(dirname(__FILE__).'/dropbox.php');
 		return $html;
 	}
 }
@@ -132,18 +127,6 @@ function checkfront_conf() {
 function checkfront_setup() {
 	global $Checkfront;
 	include(dirname(__FILE__).'/setup.php');
-}
-
-// {{{ checkfront_invoice()
-/* 
- * Display admin
- * @param void
- * @return void
-*/
-function checkfront_invoice($id) {
-	global $Checkfront;
-	return '<iframe src="https://' . $Checkfront->host . '/www/invoice/?CF_id=' . $id. '" border="0" id="CF_invoice"></iframe>';
-
 }
 
 
