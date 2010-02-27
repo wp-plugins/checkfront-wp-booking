@@ -15,7 +15,7 @@ if ( ! defined( 'WP_PLUGIN_DIR' ) ) define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/
 class Checkfront {
 	
 	const API_VERSION = '0.9.5';
-	const PLUGIN_VERSION = '0.9.1';
+	const PLUGIN_VERSION = '0.9.2';
 
 	public $app_id = 'CHECKFRONT_WP';
 	public $host= NULL; 

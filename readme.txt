@@ -50,6 +50,8 @@ A Checkfront account -- you can create one *for free* at [https://www.checkfront
 3. Admin
 
 == Changelog == 
+* *Feb 28 2010*:
+  * Fixed php shortcode issue
 * *Feb 24 2010*:
   * Updated screenshots
   * Removed legacy invoice insert

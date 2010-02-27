@@ -21,16 +21,16 @@ Checkfront is an online booking platform that allows businesses to manage their 
 <hr style="border:0; clear: both">
 <h3>Get Started</h3>
 <ol>
-<li><a href="https://www.checkfront.com/start/" target="_blank">Create your free Checkfront accont</a>, setup your inventory, and configure your account and e-commerce.</li>
+<li><a href="https://www.checkfront.com/start/" target="_blank">Create your free Checkfront account</a>, setup your inventory, and configure your account and e-commerce.</li>
 <li>Supply your Checkfront URL in the API Setup above.</li>
-<li>Create a <a href="post-new.php">new Wordpress post</a> and enbed the booking system with the shortcode <code>[checkfront booking="embed"]</code></li>
+<li>Create a <a href="post-new.php">new Wordpress post</a> and embed the booking system with the shortcode <code>[checkfront booking="embed"]</code></li>
 </ol>
 	<div class="metabox-holder meta-box-sortables pointer">
 		<div class="postbox">
 <?php
 if(isset($cf_msg)){?>
 <div style="background-color: rgb(255, 251, 204);" id="message" class="updated fade"><p><strong><?php echo $cf_msg?></strong></p></div>
-<?}?>
+<?php }?>
 			<h3 class="hndle"><span>API Setup</span></h3>
 			<div class="inside" style="padding: 0 10px">
 				<table class="form-table">
