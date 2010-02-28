@@ -3,7 +3,7 @@
 Plugin Name: Checkfront Booking
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects wordpress to the Checkfront Online Booking and Availablity platform.  
-Version: 0.9.1
+Version: 0.9.2
 Author: Checkfront Inc
 Author URI: http://www.checkfront.com/
 Copyright: 2008 - 2010 Checkfront Inc 
