@@ -23,10 +23,12 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 
 = Links =
 * [Checkfront Homepage](http://www.checkfront.com)
+* [Setting up Checkfront and Wordpress in under 5 minutes (Video)](http://www.checkfront.com/5-min-setup)
+* [FAQ](http://www.checkfront.com/support/faq)
 * [Plugin Homepage](http://www.checkfront.com/extend/wordpress)
+* [Find us on twitter](http://twitter.com/checkfront)
 * [Terms of Use](http://www.checkfront.com/legal/terms)
 * [Privacy Policy](http://www.checkfront.com/legal/privacy)
-* [Find us on twitter](http://twitter.com/checkfront)
 
 = Requirements =
 
