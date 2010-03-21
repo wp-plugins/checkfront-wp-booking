@@ -27,6 +27,7 @@ Checkfront is an online booking platform that allows businesses to manage their 
 <li><a href="https://www.checkfront.com/start/" target="_blank">Create your free Checkfront account</a>, setup your inventory, configure your account and e-commerce.</li>
 <li>Supply your Checkfront URL in the setup below.</li>
 <li>Create a <a href="post-new.php">new Wordpress post</a> and embed the booking system with by pasting in the shortcode: <br /><code style="font-size: 1.1em; font-weight: bold">[checkfront booking="embed"]</code></li>
+<li>Enable the <a href="widgets.php">Checkfront sidebar widget</a> (optional)</li>
 </ol>
 	<div class="metabox-holder meta-box-sortables pointer">
 		<div class="postbox">
@@ -44,10 +45,9 @@ if(isset($cf_msg)){?>
 						<td><em>Location of your Checkfront Management Console [<a href="https://www.checkfront.com/start">Create</a>]</em></td>
 					</tr>
 					<tr valign="top">
-						<th scope="row"><label for="checkfront_mode">Display mode:</label></th>
-						<td><input type="radio" name="checkfront_mode" id="inline" value="inline" <?php if($Checkfront->mode == 'inline') print 'checked="checked"';?>><label for="inline" value="inline">Inline</label> &nbsp;&nbsp; <input type="radio" value="framed" id="framed" name="checkfront_mode"  <?php if($Checkfront->mode == 'framed') print 'checked="checked"';?>><label for="framed">Framed</label>
-						<td><em>In-line will blend better with your existing style, but some themes may have unpredictable results with the Checkfront layout.  </em></td>
-
+						<th scope="row"><label for="checkfront_mode">Render mode:</label></th>
+						<td><input type="radio" name="checkfront_mode" id="inline" value="inline" <?php if($Checkfront->mode == 'inline') print 'checked="checked"';?>><label for="inline" value="inline">Inline</label> &nbsp;&nbsp; <input type="radio" value="framed" id="framed" name="checkfront_mode"  <?php if($Checkfront->mode == 'framed') print 'checked="checked"';?>><label for="framed">Framed</label></td>
+						<td><em>In-line will blend better with your existing layout, but is not compatible with some themes.  </em></td>
 					</tr>
 					<tr>
 					<td>

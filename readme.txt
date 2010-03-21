@@ -2,7 +2,7 @@
 
 Contributors: checkfront
 Stable tag: trunk
-Tags: Booking, Reservation, Calendar, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments
+Tags: Booking, Reservation, Calendar, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments, Bookings
 Requires at least: 2.5
 Tested up to: 2.9.2
 
@@ -17,22 +17,17 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 = Features =
 
 * Display availability, take reservations, bookings and process payments online within your website.
+* Optional sidebar widget.
 * Multi-currency, multi-gateway payment processing.
 * Advanced rate, pricing and tax configurations.
 * Detailed analytics and reporting.
 
-= Links =
-* [Checkfront Homepage](http://www.checkfront.com)
-* [Setting up Checkfront and Wordpress in under 5 minutes (Video)](http://www.checkfront.com/5-min-setup)
-* [FAQ](http://www.checkfront.com/support/faq)
-* [Plugin Homepage](http://www.checkfront.com/extend/wordpress)
-* [Find us on twitter](http://twitter.com/checkfront)
-* [Terms of Use](http://www.checkfront.com/legal/terms)
-* [Privacy Policy](http://www.checkfront.com/legal/privacy)
+* [Online Booking System](http://www.checkfront.com)
 
 = Requirements =
 
-A Checkfront account -- you can create one *for free* at [https://www.checkfront.com/start/](https://www.checkfront.com/start/ "Checkfront Sign-up") --  and Wordpress 2.5 or greater.
+* A Checkfront account -- you can create one *for free* at [https://www.checkfront.com/start/](https://www.checkfront.com/start/ "Checkfront Sign-up")
+* Wordpress 2.5 or greater.
 
 == Installation ==
 
@@ -52,8 +47,10 @@ A Checkfront account -- you can create one *for free* at [https://www.checkfront
 3. Admin
 
 == Changelog == 
-* *March 5 2010*:
-  * Version 1.0
+* *Mar 21 2010*:
+  * Added sidebar widget
+  * Improved calendar navigation
+  * Better theme integration
 * *Feb 28 2010*:
   * Fixed php shortcode issue
 * *Feb 24 2010*:

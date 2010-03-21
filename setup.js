@@ -38,7 +38,7 @@ jQuery(document).ready(function() {
                     // Append html string to tweet_container div
                 }
             });
-                    jQuery('#tweet_container').html('<ul>' + tweet_html + '</ul>');
+            jQuery('#tweet_container').html('<ul>' + tweet_html + '</ul>');
         }
     );
 });
