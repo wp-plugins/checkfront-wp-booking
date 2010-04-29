@@ -14,14 +14,17 @@ A plugin that connects your Wordpress site to the Checkfront online booking syst
 
 Unlike traditional hosted products, Checkfront does not force customers off to an external website to process bookings or view availability, yet it keeps consumer data secure and separate from Wordpress.  The combined CMS features of Wordpress with the power, flexibility and security of the Checkfront back-end make for an industry leading booking management system.
 
-
 You can configure Checkfront to manage your inventory, packages, accept reservations and process payments.
+
+Checkfront offers a free, fully featured "Soho" account, that doesn't expire.
 
 = Features =
 
 * Display availability, take reservations, bookings and process payments online within your website.
 * Optional sidebar widget.
 * Multi-currency, multi-gateway payment processing including Paypal and Authorize.net.
+
+= Installation =
 1. Install the Checkfront Booking plugin in your Wordpress admin by going to *'Plugins / Add New'* and  searching for *'Checkfront'*,  **(or)** If doing a manual install, download the plugin and unzip into your `/wp-content/plugins/` directory. 
 1. Activate the the plugin through the 'Plugins' menu in WordPress.
 
