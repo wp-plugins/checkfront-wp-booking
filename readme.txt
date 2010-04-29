@@ -4,7 +4,7 @@ Contributors: checkfront
 Stable tag: trunk
 Tags: Booking, Reservation, Calendar, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments, Bookings
 Requires at least: 2.0
-Tested up to: 3.0.0
+Tested up to: 3.0
 
 A plugin that connects your Wordpress site to the Checkfront online booking system.
 
