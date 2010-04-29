@@ -3,14 +3,17 @@
 Contributors: checkfront
 Stable tag: trunk
 Tags: Booking, Reservation, Calendar, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments, Bookings
-Requires at least: 2.5
-Tested up to: 2.9.2
+Requires at least: 2.0
+Tested up to: 3.0.0
 
-A plugin that connects your Wordpress blog to the Checkfront Booking platform.
+A plugin that connects your Wordpress site to the Checkfront online booking system.
 
 == Description ==
 
-**Checkfront™** is an online **Availability**, **Reservation** and **Booking Platform**.  This plugin connects your Wordpress site to your Checkfront account, and provides a powerful real time booking interface within your site.
+**Checkfront** is an [Online Booking System](http://www.checkfront.com) that allows businesses to manage their inventories, centralize reservations, and process payments. This plugin connects your Wordpress site to your Checkfront account, and provides a powerful real time booking interface within your site.
+
+Unlike traditional hosted products, Checkfront does not force customers off to an external website to process bookings or view availability, yet it keeps consumer data secure and separate from Wordpress.  The combined CMS features of Wordpress with the power, flexibility and security of the Checkfront back-end make for an industry leading booking management system.
+
 
 You can configure Checkfront to manage your inventory, packages, accept reservations and process payments.
 
@@ -18,19 +21,7 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 
 * Display availability, take reservations, bookings and process payments online within your website.
 * Optional sidebar widget.
-* Multi-currency, multi-gateway payment processing.
-* Advanced rate, pricing and tax configurations.
-* Detailed analytics and reporting.
-
-* [Online Booking System](http://www.checkfront.com)
-
-= Requirements =
-
-* A Checkfront account -- you can create one *for free* at [https://www.checkfront.com/start/](https://www.checkfront.com/start/ "Checkfront Sign-up")
-* Wordpress 2.5 or greater.
-
-== Installation ==
-
+* Multi-currency, multi-gateway payment processing including Paypal and Authorize.net.
 1. Install the Checkfront Booking plugin in your Wordpress admin by going to *'Plugins / Add New'* and  searching for *'Checkfront'*,  **(or)** If doing a manual install, download the plugin and unzip into your `/wp-content/plugins/` directory. 
 1. Activate the the plugin through the 'Plugins' menu in WordPress.
 
@@ -38,7 +29,7 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 1. Create your [Checkfront account](https://www.checkfront.com/start/ "Checkfront Setup")
 1. Setup you inventory and configure your account on Checkfront.
 1. Enable the Checkfront booking search widget in Wordpress.
-1. Create a Wordpress **Post** and embed the Checkfront booking system by using the shortcode: `[checkfront booking="embed"]`
+1. Create a Wordpress **Post** and embed the Checkfront booking system by using the shortcode: `[checkfront]`
 
 == Screenshots ==
 
@@ -47,15 +38,18 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 3. Admin
 
 == Changelog == 
+* *Apr 29 2010*:
+  * Added the ability to filter booking pages by category or item id.
+  * Upgraded to latest API.
 * *Mar 21 2010*:
-  * Added sidebar widget
-  * Improved calendar navigation
-  * Better theme integration
+  * Added sidebar widget.
+  * Improved calendar navigation.
+  * Better theme integration.
 * *Feb 28 2010*:
-  * Fixed php shortcode issue
+  * Fixed php shortcode issue.
 * *Feb 24 2010*:
   * Updated screenshots
-  * Removed legacy invoice insert
+  * Removed legacy invoice insert.
 * *Feb 18 2010*:
   * Moved to new 0.9 Checkfront API
   * Now supports framed version of booking window should the theme interfere with the plugin

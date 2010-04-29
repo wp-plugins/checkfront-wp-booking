@@ -1,45 +1,38 @@
 jQuery(document).ready(function() {
+
+	jQuery('#CF_shortcode').focus(function() {
+				jQuery(this).select();
+	});
+
     // Declare variables to hold twitter API url and user name
-    var twitter_api_url = 'http://search.twitter.com/search.json';
-    var twitter_user    = 'checkfront';
+	if(jQuery('#CF_id').val()) {
+    var checkfront_url = 'http://' + jQuery('#CF_id').val() + '/api/inv/list?callback=?';
+
 
     // Enable caching
-    jQuery.ajaxSetup({ cache: true });
-
     // Send JSON request
     // The returned JSON object will have a property called "results" where we find
     // a list of the tweets matching our request query
     jQuery.getJSON(
-        twitter_api_url + '?callback=?&rpp=5&q=from:' + twitter_user,
+        checkfront_url,
         function(data) {
-			var tweet_html = '';
-            jQuery.each(data.results, function(i, tweet) {
-                // Uncomment line below to show tweet data in Fire Bug console
-                // Very helpful to find out what is available in the tweet objects
-                //console.log(tweet);
+			if(data.company) {
+			    jQuery('#CF_status').html('<strong>' + data.company + '</strong>');
+			    jQuery('#CF_id').css('background','#c6ffaf');
+			} else {
+			}
+            jQuery.each(data.inv, function(category_id, inv) {
+            	jQuery('#CF_inv').append('<li><input type="radio" id="cf_categroy_id_' + category_id + '" name="inventory" value="category_id=' + category_id + '"><label for="cf_category_' + category_id + '"><strong>' + inv.name + '</strong></h2></label><ul id="CF_' + category_id +  '"></ul></li>');
+            	jQuery.each(inv.items, function(item_id, item) {
+            			jQuery('#CF_' + category_id).append('<li><input type="radio" name="inventory" id="cf_item_' + item_id + '" value="item_id=' + item_id + '" id="cf_item_id_' + item_id + '" /><label for="cf_item_' + item_id + '">' + item.name + '</label></li>');
+				});
 
+			});
 
-                // Before we continue we check that we got data
-                if(tweet.text !== undefined) {
-                    // Calculate how many hours ago was the tweet posted
-                    var date_tweet = new Date(tweet.created_at);
-                    var date_now   = new Date();
-                    var date_diff  = date_now - date_tweet;
-                    var hours      = Math.round(date_diff/(1000*60*60));
-	          		var re = /(https?:\/\/(([-\w\.]+)+(:\d+)?(\/([\-\w/_\.]*(\?\S+)?)?)?))/ig;        
-
-
-                    // Build the html string for the current tweet
-                     tweet_html += '<li>';
-			        tweet_html += tweet.text.replace(re, '<a href="$1" target="blank">$1</a>');
-                    tweet_html    += '<br/><small>' + hours;
-                    tweet_html    += ' hours ago</small><\/li>';
-
-                    // Append html string to tweet_container div
-                }
-            });
-            jQuery('#tweet_container').html('<ul>' + tweet_html + '</ul>');
+			jQuery('#CF_inv input').change(function(){
+				jQuery('#CF_shortcode').val('[checkfront ' + jQuery(this).val() + ']');	
+			});
         }
     );
+	}
 });
-
