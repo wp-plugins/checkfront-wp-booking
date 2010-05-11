@@ -2,7 +2,7 @@
 Plugin Name: Checkfront
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects Wordpress to the Checkfront Online Booking, Reservation and Availability System.
-Version: 1.4.1
+Version: 1.4.5
 Author: Checkfront Inc.
 Author URI: http://www.checkfront.com/
 Copyright: 2008 - 2010 Checkfront Inc 
@@ -13,7 +13,7 @@ if ( ! defined( 'WP_PLUGIN_DIR' ) ) define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/
 
 class Checkfront {
 
-	public $api_version = '1.2.4';
+	public $api_version = '1.2.5';
 	public  $host= NULL; 
 	public $mode='inline';
 	private $session_id;
@@ -71,27 +71,28 @@ class Checkfront {
 			$set[] = "category_id: '{$atts['category_id']}'";
 		}
 
-		if(count($set)) {
-			$CF_set = '<input type="hidden" id="CF_set" value="{' . implode(',',$set) . '}" />';
-		}
-
+	
 		if(empty($this->host)) return $this->error_config();
 		if($this->mode == 'framed') {
-			$html .= '<iframe src="//' . $this->host . '/www/client/?wp" style="border: 0; width: 100%; height: 600px"></iframe>';
+			$html .= '<iframe src="//' . $this->host . '/www/client/?wp" style="border: 0; width: 100%; height: 800px"></iframe>';
 		} else {
-			$html = '<div id="CF">' . $CF_set . '</div>';
-			if(!$this->widget) {
-				$html .= $this->CF_id();
-			}
+			$html .= $this->CF_id($set);
 		}
 		return $html;
 	}
 
-	function CF_id() {
-		$id = '<div id="CF_id" class="' . $this->host . '"></div>';
-		if($this->book_url) {
-			$id .= '<input type="hidden" id="CF_src" value="' . $this->book_url .'" />';
+	function CF_set($set=array()) {
+		if(count($set)) {
+			$CF_set = '<input type="hidden" id="CF_set" value="{' . implode(',',$set) . '}" />';
 		}
+		if($this->book_url) {
+			$CF_set .= '<input type="hidden" id="CF_src" value="' . $this->book_url .'" />';
+		}
+
+		return $CF_set;
+	}
+	function CF_id($set) {
+		$id = '<div id="CF" class="' . $this->host . '"><p id="CF_load" class="CF_load">' . __('Searching availability...') . $this->CF_set($set) . '</div>';
 		return $id;
 	}
 }
@@ -170,6 +171,7 @@ function checkfront_head() {
 		} else {
 			if(is_page() and !$checkfront_widget_page) $Checkfront->widget = 0;
 			if(is_single() and !$checkfront_widget_post) $Checkfront->widget = 0;
+
 		}
 	}
 	if ($Checkfront->widget  or $Checkfront->embed) {
@@ -240,9 +242,8 @@ function checkfront_widget() {
 	if(!$Checkfront->widget) return;
 	$checkfront_widget_title = get_option("checkfront_widget_title");
 	if(!empty($checkfront_widget_title)) print '<h2 class="widgettitle">' . $checkfront_widget_title . '</h2>';
-	print '<div id="CF_cal"></div>';
-	print '<div id="CF_search"></div>';
-	print $Checkfront->CF_id();
+	print '<div id="CF_cal" class="' . $Checkfront->host . '"></div>';
+	print $Checkfront->CF_set();
 }
 
 // Widget control

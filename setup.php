@@ -20,7 +20,7 @@
 
 <h3>Get Started</h3>
 <ol>
-<li><a href="https://www.checkfront.com/start/" target="_blank">Create your free Checkfront account</a>, setup your inventory, configure your account and e-commerce.</li>
+<li><a href="https://www.checkfront.com/start/" target="_blank">Create your Checkfront account</a>, setup your inventory, configure your account and e-commerce.</li>
 <li>Supply your Checkfront URL in the setup below.</li>
 <li>Create a booking page.</li>
 <li>Enable the <a href="widgets.php">Checkfront sidebar widget</a> (optional).</li>
