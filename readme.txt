@@ -16,9 +16,7 @@ Unlike traditional hosted products, Checkfront does not force customers off to a
 
 You can configure Checkfront to manage your inventory, packages, accept reservations and process payments.
 
-Checkfront offers a free, fully featured "Soho" account, that doesn't expire.
-
-= Features =
+= Features include =
 
 * Display availability, take reservations, bookings and process payments online within your website.
 * Optional sidebar widget.
@@ -41,6 +39,8 @@ Checkfront offers a free, fully featured "Soho" account, that doesn't expire.
 3. Admin
 
 == Changelog == 
+* *May 11 2010*:
+  * Removed "Online Bookings by Checkfront" link
 * *Apr 29 2010*:
   * Added the ability to filter booking pages by category or item id.
   * Upgraded to latest API.

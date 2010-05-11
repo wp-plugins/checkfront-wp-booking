@@ -2,7 +2,7 @@
 Plugin Name: Checkfront
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects Wordpress to the Checkfront Online Booking, Reservation and Availability System.
-Version: 1.4
+Version: 1.4.1
 Author: Checkfront Inc.
 Author URI: http://www.checkfront.com/
 Copyright: 2008 - 2010 Checkfront Inc 
@@ -13,7 +13,7 @@ if ( ! defined( 'WP_PLUGIN_DIR' ) ) define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/
 
 class Checkfront {
 
-	public $api_version = '1.2.2';
+	public $api_version = '1.2.4';
 	public  $host= NULL; 
 	public $mode='inline';
 	private $session_id;
@@ -88,7 +88,7 @@ class Checkfront {
 	}
 
 	function CF_id() {
-		$id = '<a id="CF_id" class="' . $this->host . '" href="http://www.checkfront.com/" target="_blank">' . get_bloginfo('name') . __(' Online Bookings by Checkfront') .'</a>';
+		$id = '<div id="CF_id" class="' . $this->host . '"></div>';
 		if($this->book_url) {
 			$id .= '<input type="hidden" id="CF_src" value="' . $this->book_url .'" />';
 		}
