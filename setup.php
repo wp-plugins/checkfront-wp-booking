@@ -14,7 +14,7 @@
 ?>
 <script src="<?php print WP_PLUGIN_URL . '/' . basename(dirname(__FILE__))?>/setup.js" type="text/javascript"></script>
 <form method="post" action="">
-<a href="http://www.checkfront.com/"><img src="http://www.checkfront.com/images/logo-small.png" alt="Checkfront" /></a><br />
+<a href="http://www.checkfront.com/"><img src="//www.checkfront.com/images/brand/Checkfront-Logo-40.png" alt="Checkfront" /></a><br />
 <strong>Simplified Online Bookings</strong>
 <p>Checkfront is a powerful online booking system that allows businesses to manage their inventories, centralize reservations, and process payments. </p>
 
@@ -27,7 +27,7 @@
 </ol>
 	<div class="metabox-holder meta-box-sortables pointer">
 		<div class="postbox">
-			<h3 class="hndle"><span  style="background: url('//media.checkfront.com/images/mnu/manage.png') left center no-repeat; padding: 1em 1em 1em 24px;">Setup</span></h3>
+			<h3 class="hndle"><span  style="background: url('//media.checkfront.com/images/menu/manage.png') left center no-repeat; padding: 1em 1em 1em 24px;">Setup</span></h3>
 <?php
 if(isset($cf_msg)){?>
 <div style="background-color: rgb(255, 251, 204); margin:1em 1em 0em 1em" id="message" class="updated fade"><p><strong><?php echo $cf_msg?></strong></p></div>
@@ -66,7 +66,7 @@ padding: .2em 0 .2em 2em;
 </style>
 <div class="metabox-holder meta-box-sortables pointer">
         <div class="postbox">
-			<h3 class="hndle"><span  style="background: url('//media.checkfront.com/images/mnu/inventory.png') left center no-repeat; padding: 1em 1em 1em 24px;">Create a booking page</span></h3>
+			<h3 class="hndle"><span  style="background: url('//media.checkfront.com/images/menu/inventory.png') left center no-repeat; padding: 1em 1em 1em 24px;">Create a booking page</span></h3>
 				<p style="padding-left: .5em"> Create a <a href="page-new.php">new Wordpress page</a> and embed the Checkfront booking system by pasting in the shortcode below.</p>
 				<table class="form-table">
 				<tbody>
