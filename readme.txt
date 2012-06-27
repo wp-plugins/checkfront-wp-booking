@@ -4,9 +4,10 @@ Contributors: checkfront
 Stable tag: trunk
 Tags: Booking, Reservation, Calendar, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments, Bookings
 Requires at least: 2.0
-Tested up to: 3.0
+License: GPLv2 or later
+Tested up to: 3.4
 
-A plugin that connects your Wordpress site to the Checkfront online booking system.
+Integrate Checkfront into Wordpress and add self service bookings on your website. Fast secure back-office app and a clean smart front-end.
 
 == Description ==
 
@@ -18,27 +19,41 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 
 = Features include =
 
-* Display availability, take reservations, bookings and process payments online within your website.
-* Optional sidebar widget.
-* Multi-currency, multi-gateway payment processing including Paypal and Authorize.net.
+* Display real time availability, take reservations, bookings and process payments online within your website.
+* SSL support keeps the customer on your website while making payment.
+* Theme support allows you to tailor the look and feel of the booking portal.
+* Multi-currency, multi-gateway payment processing including Paypal and Authorize.net, and SagePay.
+* Further integration with Salesforce, Zoho, Google Apps, Xero [and more](http://www.checkfront.com/resources).
+* Support for short codes, or custom theme pages in Wordpress.
 
-= Installation =
+== Installation ==
 1. Install the Checkfront Booking plugin in your Wordpress admin by going to *'Plugins / Add New'* and  searching for *'Checkfront'*,  **(or)** If doing a manual install, download the plugin and unzip into your `/wp-content/plugins/` directory. 
 1. Activate the the plugin through the 'Plugins' menu in WordPress.
-
-= Configuration =
+= Configuration = 
 1. Create your [Checkfront account](https://www.checkfront.com/start/ "Checkfront Setup")
 1. Setup you inventory and configure your account on Checkfront.
 1. Enable the Checkfront booking search widget in Wordpress.
 1. Create a Wordpress **Post** and embed the Checkfront booking system by using the shortcode: `[checkfront]`
 
+== Frequently Asked Questions ==
+1. [Checkfront Wordpress FAQ](https://www.checkfront.com/wordpress/#faq). 
+1. [General Checkfront FAQ](https://www.checkfront.com/faq). 
+1. [Additional Support and Documenation](https://www.checkfront.com/support/). 
+
 == Screenshots ==
 
-1. Inventory search
-2. Pre-Payment 
-3. Admin
+1. Booking Interface integrated into Wordpress
+2. Checkfront Dashboard
+
+== Upgrade Notice ==
+
+= 2.0 =
+
+  * Added support for v2.0 Booking Interface.  Includes more configuration options, advanced checkout, improved browser support and mode.  **IMPORTANT**: Once the update is complete, you must go to the plugin setup in Wordpress and switch from the Legacy 1.0 interface, to 2.0.
 
 == Changelog == 
+* June 25  2012*:
+  * Added support for v2.0 Checkout.  Includes more configuration options.
 * *May 11 2010*:
   * Removed "Online Bookings by Checkfront" link
 * *Apr 29 2010*:
