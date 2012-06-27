@@ -47,7 +47,7 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 
 == Upgrade Notice ==
 
-= 2.0 =
+= 2.5 =
 
   * Added support for v2.0 Booking Interface.  Includes more configuration options, advanced checkout, improved browser support and mode.  **IMPORTANT**: Once the update is complete, you must go to the plugin setup in Wordpress and switch from the Legacy 1.0 interface, to 2.0.
 
