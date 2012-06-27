@@ -13,7 +13,7 @@ Combine the sleek Checkfront back-office app with the ease and power of WordPres
 
 **Checkfront** is an [Online Booking System](http://www.checkfront.com) that allows businesses to manage their inventories, centralize reservations, and process payments. This plugin connects your Wordpress site to your Checkfront account, and provides a powerful real time booking interface within your site.
 
-Unlike traditional hosted products, Checkfront does not force customers off to an external website to process bookings or view availability, yet it keeps consumer data secure and separate from Wordpress.  The combined CMS features of Wordpress with the power, flexibility and security of the Checkfront back-end make for an industry leading booking management system.
+Checkfront integrates seamlessly into Wordpress and does not force customers off to an external website to process bookings or view availability.  Checkfront keeps consumer data secure and separate from Wordpress.  The combined CMS features of Wordpress with the power, flexibility and security of the Checkfront back-end make for an industry leading booking management system.
 
 You can configure Checkfront to manage your inventory, packages, accept reservations and process payments.
 
