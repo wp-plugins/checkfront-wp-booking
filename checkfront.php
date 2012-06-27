@@ -1,212 +1,15 @@
-<?php /* 
+<?php 
+/* 
 Plugin Name: Checkfront Online Booking System
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects Wordpress to the Checkfront Online Booking, Reservation and Availability System.  Checkfront integrates into popular payment systems including Paypal, Authorize.net, SagePay and integrates into Salesforce, Xero and Google Apps.  Transactions, Reporting and Bookings are securly stored in the Checkfront backoffice app, while providing a self service booking portal on your own website.
-Version: 2.5.1
+Version: 2.5.2
 Author: Checkfront Inc.
 Author URI: http://www.checkfront.com/
 Copyright: 2008 - 2012 Checkfront Inc 
 */
 
 if ( ! defined( 'WP_PLUGIN_URL' ) ) define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
-if ( ! defined( 'WP_PLUGIN_DIR' ) ) define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
-
-class Checkfront {
-
-	public $api_version = '2.0';
-	public  $host= NULL; 
-	public $mode='inline';
-	public $widget = false;
-	public $book_url = '';
-	public $embed = false;
-	public $interface = 'v1';
-	public $view = 'D';
-	public $discount = '';
-	public $theme = '';
-
-	public $args = array();
-
-	function __construct($host=NULL) {
-		$this->set_host($host);
-		if($mode = get_option('checkfront_mode')) {
-			$this->mode = $mode;
-		}
-		$this->interface = ($interface = get_option('checkfront_interface')) ? $interface : 'v1';
-	}
-
-
-    /**
-     * get shortcode arg defaults
-     *
-     * @param void
-     * @return bool
-    */
-	public function get_args() {
-		$this->args['view']= get_option('checkfront_view');
-		$this->args['theme']= get_option('checkfront_theme');
-		$this->args['style_background-color']= get_option('checkfront_style_background-color');
-		$this->args['style_color']= get_option('checkfront_style_color');
-		$this->args['style_font-family']= get_option('checkfront_style_font-family');
-		$this->args['options-tabs']= get_option('checkfront_options-tabs');
-		$this->args['options-compact']= get_option('checkfront_options-compact');
-		$this->args['shortcode']= get_option('checkfront_shortcode');
-		if(!$this->args['shortcode']) $this->args['shortcode'] = '[checkfront]';
-		return true;
-	}
-
-    /**
-     * sets the checkfront host
-     *
-     * @param string $host
-     * @return bool
-    */
-	function set_host($host) {
-		$this->host = $host;
-		$this->url = "//{$this->host}";
-		$this->api_url = "{$this->url}/api/" . $this->api_version;
-		return true;
-	}
-
-    /**
-     * set valid host
-     *
-     * @param string $host
-     * @return string $host  
-    */
-	function valid_host($value) {
-		if(!preg_match('~^http://|https://~',$value)) $value = 'https://' . $value;
-		if($uri = parse_url($value)) {
-			if($uri['host']) {
-				$host= $uri['host'];
-			}
-		}
-		return $host;
-	}
-
-
-    /**
-     * display error when plugin is not yet configured
-     *
-     * @param void
-     * @return string $html formatted message
-    */
-	function error_config() {
-		if(is_admin()) {
-			return '<p style="padding: .5em; border: solid 1px red;">' . __('Please configure the Checkfront plugin in the Wordpress Admin.') . '</p>';
-		} else {
-			return '<p style="padding: .5em; border: solid 1px red;">' . __('Bookings not yet available here.') .'</p>';
-		}
-	}
-
-    /**
-     * render booking widget
-     *
-     * @param array $cnf shortcode paramaters
-     * @return string $html rendering code
-    */
-	function render($cnf) {
-		$cnf = $this->clean($cnf);
-		if($this->interface == 'v1') {
-			return $this->v1_interface($cnf);
-		} else {
-			return $this->v2_interface($cnf);
-		}
-	}
-
-    /**
-     * clean short code params
-     *
-     * @param array $cnf shortcode paramaters
-     * @return array $cnf formatted paramaters
-    */
-	function clean($cnf) {
-		foreach($cnf as $cnf_id => $data) {
-			addslashes($cnf[$cnf_id] = strip_tags($data));
-		}
-		return $cnf;
-	}
-
-    /**
-     * render v1 legacy mode
-     *
-     * @param array $cnf shortcode paramaters
-     * @return string $html rendering code
-    */
-	function v1_interface($cnf) {
-		$set = array();
-		if($cnf['item_id'] >0) {
-			$set[] = "item_id: '{$cnf['item_id']}'";
-		}
-		if($cnf['category_id'] >0) {
-			$set[] = "category_id: '{$cnf['category_id']}'";
-		}
-		if(empty($this->host)) return $this->error_config();
-		if($this->mode == 'framed') {
-			$html = '<iframe src="//' . $this->host . '/www/client/?wp" style="border: 0; width: 100%; height: 800px"></iframe>';
-		} else {
-			$html = $this->droplet($set);
-		}
-		return $html;
-	}
-
-    /**
-     * get the location of the pipe helper.  
-     * The pipe helps performance and sizing of the v2 interface.
-     *
-     * @param void
-     * @return string $pipe url (must be local to this domain)
-    */
-	private function get_pipe() {
-		return WP_PLUGIN_URL . '/' . basename(dirname(__FILE__)) . '/pipe.html';
-	}
-
-
-    /**
-     * render v2 interface
-     *
-     * @param array $cnf shortcode paramaters
-     * @return string $html rendering code
-    */
-	function v2_interface($cnf) {
-		$pipe = $this->get_pipe();
-		$html = '<div id="CHECKFRONT_BOOKING_WIDGET_01"><p id="CHECKFRONT_LOADER" style="background: url(\'https://media.checkfront.com/images/loader.gif\') left center no-repeat; padding: 5px 5px 5px 20px">Loading Booking System...</p></div>';
-		$html .= "\n<script type='text/javascript'>\nnew CHECKFRONT.Widget ({";
-		$html .= "host: '{$this->host}',\n";
-		$html .= "pipe: '{$pipe}',\n";
-		$html .= "target: 'CHECKFRONT_BOOKING_WIDGET_01',\n";
-		// optional, or default items
-		if($cnf['theme']) $html .= "theme: '{$this->theme}',\n";
-		if($cnf['width'] > 0)  $html .= "width: '{$cnf['width']}',\n";
-		if($cnf['layout'])  $html .= "layout: '{$cnf['layout']}',\n";
-		if($cnf['tid'])  $html .= "tid: '{$cnf['tid']}',\n";
-		if($cnf['options'])  $html.= "options: '{$cnf['options']}',\n";
-		if($cnf['style'])  $html .= "style: '{$cnf['style']}'";
-		$html .="}).render();</script>";
-		return $html;
-	}	
-
-	function CF_set($set=array()) {
-		if(count($set)) {
-			$CF_set = '<input type="hidden" id="CF_set" value="{' . implode(',',$set) . '}" />';
-		}
-		if($this->book_url) {
-			$CF_set .= '<input type="hidden" id="CF_src" value="' . $this->book_url .'" />';
-		}
-
-		return $CF_set;
-	}
-
-
-    /**
-     * v1 droplet
-     *
-     * @param array $cff
-     * @return string html id
-    */
-	function droplet($set) {
-		return '<div id="CF" class="' . $this->host . '"><p id="CF_load" class="CF_load">' . __('Searching availability...') . $this->CF_set($set) . '</div>';
-	}
-}
 
 /* ------------------------------------------------------
  * Wordpress Required Functions
@@ -223,6 +26,8 @@ function checkfront_func($cnf, $content=null) {
 		'style' => '',
 		'width' => '',
 		'theme' => '',
+		'category_id'=>'',
+		'item_id'=>'',
 	), $cnf);
 	return checkfront($cnf);
 }
@@ -282,10 +87,10 @@ function checkfront_head() {
 	if ($Checkfront->widget  or $Checkfront->embed) {
 		$Checkfront->book_url = get_option("checkfront_book_url");
 		if($Checkfront->interface == 'v1') {
-			print ' <script src="//' . $Checkfront->host . '/www/client.js?wp" type="text/javascript"></script>' ."\n";
-			print ' <link rel="stylesheet" href="//' . $Checkfront->host . '/www/client.css?wp" type="text/css" media="all" />' . "\n";
+			echo ' <script src="//' . $Checkfront->host . '/www/client.js?wp" type="text/javascript"></script>' ."\n";
+			echo ' <link rel="stylesheet" href="//' . $Checkfront->host . '/www/client.css?wp" type="text/css" media="all" />' . "\n";
 		} else {
-			print ' <script src="//' . $Checkfront->host . '/lib/interface.js?v=3" type="text/javascript"></script>' ."\n";
+			echo ' <script src="//' . $Checkfront->host . '/lib/interface.js?v' . $Checkfront->interface_lib_version . '" type="text/javascript"></script>' ."\n";
 		}
 		if($Checkfront->embed) {
 			// Disable Comments
@@ -340,9 +145,9 @@ function checkfront_widget() {
 	global $Checkfront;
 	if(!$Checkfront->widget) return;
 	$checkfront_widget_title = get_option("checkfront_widget_title");
-	if(!empty($checkfront_widget_title)) print '<h2 class="widgettitle">' . $checkfront_widget_title . '</h2>';
-	print '<div id="CF_cal" class="' . $Checkfront->host . '"></div>';
-	print $Checkfront->CF_set();
+	if(!empty($checkfront_widget_title)) echo '<h2 class="widgettitle">' . $checkfront_widget_title . '</h2>';
+	echo '<div id="CF_cal" class="' . $Checkfront->host . '"></div>';
+	echo $Checkfront->CF_set();
 }
 
 // Widget control
@@ -370,21 +175,35 @@ function checkfront_widget_ctrl() {
  	$checkfront_widget_page = (get_option("checkfront_widget_page")) ? ' checked="checked"' : '';
  	$checkfront_widget_booking  = (get_option("checkfront_widget_booking")) ? ' checked="checked"' : '';
 
-	print '<input type="hidden" name="checkfront_update" value="1" />';	
-	print '<ul>';
-	print '<li><label for="checkfront_book_url">' . __('Booking Page (URL)') . ': </label><input type="text" id="checkfront_book_url" name="checkfront_book_url" value="' . $checkfront_book_url . '" /> </li>';
-	print '<li><label for="checkfront_widget_title">' . __('Title') . ': </label><input type="text" id="checkfront_widget_title" name="checkfront_widget_title" value="' . $checkfront_widget_title . '" /> </li>';
-	print '<li><input type="checkbox" id="checkfront_widget_post" name="checkfront_widget_post" value="1"' . $checkfront_widget_post . '/><label for="checkfront_widget_post" />' . __('Show on posts') . '</li>';
-	print '<li><input type="checkbox" id="checkfront_widget_page" name="checkfront_widget_page" value="1"' .  $checkfront_widget_page . '/><label for="checkfront_widget_post" />' . __('Show on pages') . '</li>';
-	print '<li><input type="checkbox" id="checkfront_widget_booking" name="checkfront_widget_booking" value="1"' . $checkfront_widget_booking . '/><label for="checkfront_widget_booking" />' . __('Show on booking page') . '</li>';
-	print '</ul>';
+	echo '<input type="hidden" name="checkfront_update" value="1" />';	
+	echo '<ul>';
+	echo '<li><label for="checkfront_book_url">' . __('Booking Page (URL)') . ': </label><input type="text" id="checkfront_book_url" name="checkfront_book_url" value="' . $checkfront_book_url . '" /> </li>';
+	echo '<li><label for="checkfront_widget_title">' . __('Title') . ': </label><input type="text" id="checkfront_widget_title" name="checkfront_widget_title" value="' . $checkfront_widget_title . '" /> </li>';
+	echo '<li><input type="checkbox" id="checkfront_widget_post" name="checkfront_widget_post" value="1"' . $checkfront_widget_post . '/><label for="checkfront_widget_post" />' . __('Show on posts') . '</li>';
+	echo '<li><input type="checkbox" id="checkfront_widget_page" name="checkfront_widget_page" value="1"' .  $checkfront_widget_page . '/><label for="checkfront_widget_post" />' . __('Show on pages') . '</li>';
+	echo '<li><input type="checkbox" id="checkfront_widget_booking" name="checkfront_widget_booking" value="1"' . $checkfront_widget_booking . '/><label for="checkfront_widget_booking" />' . __('Show on booking page') . '</li>';
+	echo '</ul>';
 }
 
 /*
  Create Checkront class.  If you wish to include this in a custom theme (not shortcode)
  see the custom-theme-sample.php
 */
-$Checkfront = new Checkfront(get_option('checkfront_host'));
+// Include Checkfront Widget Class
+include_once(dirname(__FILE__).'/CheckfrontWidget.php');
+
+$Checkfront = new CheckfrontWidget(
+	array(
+		'host'=>get_option('checkfront_host'),
+		'plugin_url'=>WP_PLUGIN_URL . '/' . basename(dirname(__FILE__)),
+		'legacy_mode'=>get_option('checkfront_mode'),
+		'interface' =>get_option('checkfront_interface'),
+		'provider' =>'wordpress',
+		'load_msg'=>__('Searching Availability'),
+		'continue_msg'=>__('Continue to Secure Booking System'),
+	)
+);
+
 add_shortcode('checkfront', 'checkfront_func');
 add_action('admin_menu', 'checkfront_conf');
 add_action('init', 'checkfront_init');

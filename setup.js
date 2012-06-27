@@ -47,7 +47,7 @@ jQuery(document).ready(function() {
 		var font = jQuery('#checkfront_style_font-family').val();
 		if(background_color) style.push("background-color:" + clean(background_color));
 		if(color) style.push("color:" + clean(background_color));
-		if(font) style.push("font:" + clean(font));
+		if(font) style.push("font-family:" + clean(font));
 		if(style.length > 0) {
 			return " style='" + style.join(';') + "'";
 		} else {
@@ -69,7 +69,7 @@ jQuery(document).ready(function() {
 	}
 		
 	function clean(str) {
-		return str.replace(/[^\d\w\-\_ ]/ig,'');
+		return str.replace(/[^\d\w\-\_ , "]/ig,'');
 	}
 
 	function flashColor(container) {

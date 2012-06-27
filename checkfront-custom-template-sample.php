@@ -24,22 +24,40 @@
  *  
  *  The Checkfront plugin must be installed and active.  This method
  *  only works with the v2 interface.
-*/
+ */
+
+
+$schema = ($_SERVER['HTTPS'] != "on") ? 'http' : 'https';
+// replace demo.checkfront.com with your checkfront host
+// if using https, be sure and change the schema in the pipe
+
+include_once('CheckfrontWidget.php');
+$Checkfront = new CheckfrontWidget(
+	array(
+		'host'=>'demo.checkfront.com', // your checkfront host
+		'plugin_url'=>"{$schema}://{$_SERVER['HTTP_HOST']}/wp-content/plugins/checkfront-wp-booking/",
+		'interface' =>'v2', 
+		'provider' =>'wordpress'
+	)
+);
+
+
+// add the widget include to your theme header.  you could remove this and it in manually if preferrer. 
+function checkfront_custom_head() {
+	global $Checkfront;
+	echo ' <script src="//' . $Checkfront->host . '/lib/interface.js?v' . $Checkfront->interface_lib_version . '" type="text/javascript"></script>';
+}
+add_action('wp_head', 'checkfront_custom_head');
+
 
 get_header($template_name);
 
-// replace demo.checkfront.com with your checkfront host
-$Checkfront = new Checkfront('demo.checkfront.com');
-$Checkfront->interface = 'v2';
 
-// if using https, be sure and change the schema in the pipe
-$Checkfront->pipe = "http://{$_SERVER['HTTP_HOST']}/wp-content/plugins/checkfront-wp-booking/pipe.html";
-$Checkfront->render(
+echo $Checkfront->render(
 	array(
 		'options'=>'tabs,compact',
-		'style'=>'background-color: FFF;font:Tahoma',
+		'style'=>'background-color: #fff; color: #000; font-family: Arial',
 	)
 );
 
 get_footer($template_name);
-

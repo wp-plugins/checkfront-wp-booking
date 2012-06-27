@@ -33,7 +33,8 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 1. Create your [Checkfront account](https://www.checkfront.com/start/ "Checkfront Setup")
 1. Setup you inventory and configure your account on Checkfront.
 1. Enable the Checkfront booking search widget in Wordpress.
-1. Create a Wordpress **Post** and embed the Checkfront booking system by using the shortcode: `[checkfront]`
+1. Create a Wordpress **Post** and embed the Checkfront booking system by using the shortcode: `[checkfront]` (see the plugin for more options to pass to the shortcode).
+1. If you wish to use a theme template instead of a shortcode, see the checkfront-custom-template-sample.php provided with the plugin.
 
 == Frequently Asked Questions ==
 1. [Checkfront Wordpress FAQ](https://www.checkfront.com/wordpress/#faq). 
@@ -47,11 +48,13 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 
 == Upgrade Notice ==
 
-= 2.5.1 =
+= 2.5.2 =
 
   * Added support for v2.0 Booking Interface.  Includes more configuration options, advanced checkout, improved browser support and mode.  **IMPORTANT**: Once the update is complete, you must go to the plugin setup in Wordpress and switch from the Legacy 1.0 interface, to 2.0.
 
 == Changelog == 
+* June 27  2012*:
+  * Split out CheckfrontWidget class so it can be used on its own.  Added custom template sample.  Fixed issue with category filter.
 * June 25  2012*:
   * Added support for v2.0 Checkout.  Includes more configuration options.
 * *May 11 2010*:

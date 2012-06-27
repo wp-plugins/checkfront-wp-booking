@@ -79,7 +79,7 @@ if(isset($cf_msg)){?>
 					</tr>
 					<tr valign="top" class="checkfront_v1" <?php if($Checkfront->interface == 'v2') print ' style="display: none"'?>>
 						<th scope="row"><label for="checkfront_mode">Render mode:</label></th>
-						<td><input type="radio" name="checkfront_mode" id="inline" value="inline" <?php if($Checkfront->mode == 'inline') print 'checked="checked"';?> /> <label for="inline">Inline</label> &nbsp;&nbsp; <input type="radio" value="framed" id="framed" name="checkfront_mode"  <?php if($Checkfront->mode == 'framed') print 'checked="checked"';?> /> <label for="framed">Framed</label></td>
+						<td><input type="radio" name="checkfront_mode" id="inline" value="inline" <?php if($Checkfront->legacy_mode == 'inline') print 'checked="checked"';?> /> <label for="inline">Inline</label> &nbsp;&nbsp; <input type="radio" value="framed" id="framed" name="checkfront_mode"  <?php if($Checkfront->mode == 'framed') print 'checked="checked"';?> /> <label for="framed">Framed</label></td>
 						<td><em>In-line will blend better with your existing layout, but is not compatible with some themes.  </em></td>
 					</tr>
 					<tr>
