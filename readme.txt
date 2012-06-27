@@ -23,7 +23,7 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 * SSL support keeps the customer on your website while making payment.
 * Theme support allows you to tailor the look and feel of the booking portal.
 * Multi-currency, multi-gateway payment processing including Paypal and Authorize.net, and SagePay.
-* Further integration with Salesforce, Zoho, Google Apps, Xero [and more](http://www.checkfront.com/resources).
+* Further integration with [Salesforce, Zoho, Google Apps, Xero and more](http://www.checkfront.com/resources).
 * Support for short codes, or custom theme pages in Wordpress.
 
 == Installation ==
