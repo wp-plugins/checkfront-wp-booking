@@ -1,4 +1,4 @@
-=== Checkfront Booking Plugin ===
+=== Checkfront Online Booking System ===
 
 Contributors: checkfront
 Stable tag: trunk
@@ -7,7 +7,7 @@ Requires at least: 2.0
 License: GPLv2 or later
 Tested up to: 3.4
 
-Integrate Checkfront into Wordpress and add self service bookings on your website. Fast secure back-office app and a clean smart front-end.
+Combine the sleek Checkfront back-office app with the ease and power of WordPress. Online Booking Management has never been so easy!
 
 == Description ==
 
