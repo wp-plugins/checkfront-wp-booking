@@ -2,7 +2,7 @@
 Plugin Name: Checkfront Online Booking System
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects Wordpress to the Checkfront Online Booking, Reservation and Availability System.  Checkfront integrates into popular payment systems including Paypal, Authorize.net, SagePay and integrates into Salesforce, Xero and Google Apps.  Transactions, Reporting and Bookings are securly stored in the Checkfront backoffice app, while providing a self service booking portal on your own website.
-Version: 2.5
+Version: 2.5.1
 Author: Checkfront Inc.
 Author URI: http://www.checkfront.com/
 Copyright: 2008 - 2012 Checkfront Inc 
@@ -219,7 +219,7 @@ function checkfront_func($cnf, $content=null) {
 		'item_id' => '0',
 		'tid' => '',
 		'discount' => '',
-		'tabs' => '',
+		'options' => '',
 		'style' => '',
 		'width' => '',
 		'theme' => '',
