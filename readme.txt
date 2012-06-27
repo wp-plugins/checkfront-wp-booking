@@ -7,7 +7,7 @@ Requires at least: 2.0
 License: GPLv2 or later
 Tested up to: 3.4
 
-Combine the sleek Checkfront back-office app with the ease and power of WordPress. Online Booking Management has never been so easy!
+Combine the sleek Checkfront back-office App with the ease and publishing power of WordPress. Online Booking Management has never been so easy!
 
 == Description ==
 
