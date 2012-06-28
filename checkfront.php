@@ -3,7 +3,7 @@
 Plugin Name: Checkfront Online Booking System
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects Wordpress to the Checkfront Online Booking, Reservation and Availability System.  Checkfront integrates into popular payment systems including Paypal, Authorize.net, SagePay and integrates into Salesforce, Xero and Google Apps.  Transactions, Reporting and Bookings are securly stored in the Checkfront backoffice app, while providing a self service booking portal on your own website.
-Version: 2.5.2
+Version: 2.5.3
 Author: Checkfront Inc.
 Author URI: http://www.checkfront.com/
 Copyright: 2008 - 2012 Checkfront Inc 
@@ -86,10 +86,12 @@ function checkfront_head() {
 
 	if ($Checkfront->widget  or $Checkfront->embed) {
 		$Checkfront->book_url = get_option("checkfront_book_url");
-		if($Checkfront->interface == 'v1') {
+		if($Checkfront->interface == 'v1' or $Checkfront->widget) {
 			echo ' <script src="//' . $Checkfront->host . '/www/client.js?wp" type="text/javascript"></script>' ."\n";
 			echo ' <link rel="stylesheet" href="//' . $Checkfront->host . '/www/client.css?wp" type="text/css" media="all" />' . "\n";
-		} else {
+		}
+
+		if($Checkfront->interface == 'v2') {
 			echo ' <script src="//' . $Checkfront->host . '/lib/interface.js?v' . $Checkfront->interface_lib_version . '" type="text/javascript"></script>' ."\n";
 		}
 		if($Checkfront->embed) {
@@ -147,7 +149,7 @@ function checkfront_widget() {
 	$checkfront_widget_title = get_option("checkfront_widget_title");
 	if(!empty($checkfront_widget_title)) echo '<h2 class="widgettitle">' . $checkfront_widget_title . '</h2>';
 	echo '<div id="CF_cal" class="' . $Checkfront->host . '"></div>';
-	echo $Checkfront->CF_set();
+	echo $Checkfront->droplet_set();
 }
 
 // Widget control
@@ -179,6 +181,7 @@ function checkfront_widget_ctrl() {
 	echo '<ul>';
 	echo '<li><label for="checkfront_book_url">' . __('Booking Page (URL)') . ': </label><input type="text" id="checkfront_book_url" name="checkfront_book_url" value="' . $checkfront_book_url . '" /> </li>';
 	echo '<li><label for="checkfront_widget_title">' . __('Title') . ': </label><input type="text" id="checkfront_widget_title" name="checkfront_widget_title" value="' . $checkfront_widget_title . '" /> </li>';
+	echo '<li style="color: firebrick">It is not recommended to use this with the v2 interface.</li>';
 	echo '<li><input type="checkbox" id="checkfront_widget_post" name="checkfront_widget_post" value="1"' . $checkfront_widget_post . '/><label for="checkfront_widget_post" />' . __('Show on posts') . '</li>';
 	echo '<li><input type="checkbox" id="checkfront_widget_page" name="checkfront_widget_page" value="1"' .  $checkfront_widget_page . '/><label for="checkfront_widget_post" />' . __('Show on pages') . '</li>';
 	echo '<li><input type="checkbox" id="checkfront_widget_booking" name="checkfront_widget_booking" value="1"' . $checkfront_widget_booking . '/><label for="checkfront_widget_booking" />' . __('Show on booking page') . '</li>';
