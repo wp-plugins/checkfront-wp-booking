@@ -53,8 +53,8 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
   * Added support for v2.0 Booking Interface.  Includes more configuration options, advanced checkout, improved browser support and mode.  **IMPORTANT**: Once the update is complete, you must go to the plugin setup in Wordpress and switch from the Legacy 1.0 interface, to 2.0.
 
 == Changelog == 
-* June 28  2012*:
-  * Added the ability to use the sidebar widget (legacy) with the v2 interface.
+* June 29  2012*:
+  * Fixed issue with v1 droplet call
 
 * June 27  2012*:
   * Split out CheckfrontWidget class so it can be used on its own.  Added custom template sample.  Fixed issue with category filter.
