@@ -4,7 +4,7 @@
  * PHP 5 
  *
  * @package     CheckfrontWidget
- * @version     2.0
+ * @version     2.1
  * @author      Checkfront <code@checkfront.com>
  * @copyright   2008-2012 Checkfront Inc 
  * @license     http://opensource.org/licenses/bsd-license.php New BSD License

@@ -46,44 +46,51 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 1. Booking Interface integrated into Wordpress
 2. Checkfront Dashboard
 
+== Changelog == 
+
+= 2.5.5 = 
+Updated v2.0 Widget library.  Fixed issue with v1 droplet call. 
+
+= 2.5.3 = 
+  * Split out CheckfrontWidget class so it can be used on its own.  Added custom template sample.  Fixed issue with category filter.
+
+= 2.5 = 
+* Added support for v2.0 Checkout.  Includes more configuration options, improved interfaced and payment integration.
+
+= 1.5 = 
+* Removed "Online Bookings by Checkfront" link
+
+= 1.3 = 
+* Added the ability to filter booking pages by category or item id.
+* Upgraded to latest API.
+
+= 1.2 = 
+* Added sidebar widget.
+* Improved calendar navigation.
+* Better theme integration.
+
+= 1.1 = 
+* Fixed php shortcode issue.
+
+= 1.0 = 
+* Updated screenshots
+* Removed legacy invoice insert.
+
+= 0.9 =
+* Moved to new 0.9 Checkfront API
+* Now supports framed version of booking window should the theme interfere with the plugin
+* Removed search widget: search functionality has been moved to main booking interface  - will reappear in another format.
+* Improved compatibility fixes.  
+
+= 0.8 = 
+
+* Made compatible with wordpress 2.5+.  
+* No longer loads remote javascript site wide, only on an embedded booking page.
+* Improved warning messages and admin settings.
+* Moved admin settings to plugin menu.
+
 == Upgrade Notice ==
 
-= 2.5.2 =
+= 2.5.5 =
 
-  * Added support for v2.0 Booking Interface.  Includes more configuration options, advanced checkout, improved browser support and mode.  **IMPORTANT**: Once the update is complete, you must go to the plugin setup in Wordpress and switch from the Legacy 1.0 interface, to 2.0.
-
-== Changelog == 
-* June 29  2012*:
-  * Fixed issue with v1 droplet call
-
-* June 27  2012*:
-  * Split out CheckfrontWidget class so it can be used on its own.  Added custom template sample.  Fixed issue with category filter.
-* June 25  2012*:
-  * Added support for v2.0 Checkout.  Includes more configuration options.
-* *May 11 2010*:
-  * Removed "Online Bookings by Checkfront" link
-* *Apr 29 2010*:
-  * Added the ability to filter booking pages by category or item id.
-  * Upgraded to latest API.
-* *Mar 21 2010*:
-  * Added sidebar widget.
-  * Improved calendar navigation.
-  * Better theme integration.
-* *Feb 28 2010*:
-  * Fixed php shortcode issue.
-* *Feb 24 2010*:
-  * Updated screenshots
-  * Removed legacy invoice insert.
-* *Feb 18 2010*:
-  * Moved to new 0.9 Checkfront API
-  * Now supports framed version of booking window should the theme interfere with the plugin
-  * Removed search widget: search functionality has been moved to main booking interface  - will reappear in another format.
-* *Nov 30 2009*: 
- * Improved compatibility fixes.  
-* *Nov 13 2009*: 
- * Made compatible with wordpress 2.5+.  
- * No longer loads remote javascript site wide, only on an embedded booking page.
- * Improved warning messages and admin settings.
- * Moved admin settings to plugin menu.
-* *Nov 6 2009*: Updated readme, small IE fix.
-* *Nov 5 2009*: Initial public beta.
+Added support for v2.0 Booking Interface.  Includes more configuration options, advanced checkout, improved browser support and mode.  **IMPORTANT**: Once the update is complete, you must go to the plugin setup in Wordpress and switch from the Legacy 1.0 interface, to 2.0.
