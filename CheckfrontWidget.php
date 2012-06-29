@@ -78,6 +78,7 @@ class CheckfrontWidget {
 
 	function __construct($cnf) {
 		$this->set_host($cnf['host']);
+		$this->set_pipe($cnf['pipe_url']);
 		$this->set_plugin_url($cnf['plugin_url']);
 		$this->interface = ($cnf['interface']) ? $cnf['interface'] : 'v1';
 		$this->provider = $cnf['provider'];
@@ -93,6 +94,16 @@ class CheckfrontWidget {
     */
 	function set_plugin_url($url) {
 		$this->plugin_url = preg_replace('|/$|','',$url);
+	}
+
+
+    /**
+     * set location of the pipe file.  most be located on the same server.
+     * @param string $url
+     * @return bool
+    */
+	function set_pipe($url) {
+		$this->pipe_url = preg_replace('|/$|','',$url);
 	}
 
     /**
@@ -213,17 +224,6 @@ class CheckfrontWidget {
 	}
 
     /**
-     * get the location of the pipe helper.  
-     * The pipe helps performance and sizing of the v2 interface.
-     *
-     * @param void
-     * @return string $pipe url (must be local to this domain)
-    */
-	private function get_pipe() {
-		return $this->plugin_url . '/pipe.html';
-	}
-
-    /**
      * set the category and item id filters
      *
      * @param strong $ids 
@@ -242,13 +242,12 @@ class CheckfrontWidget {
     */
 	private function v2_interface($cnf) {
 		$cnf['widget_id'] = ($cnf['widget_id'] > 0) ? $cnf['widget_id'] : '01';
-		$pipe = $this->get_pipe();
 		$html = "\n<!-- CHECKFRONT BOOKING PLUGIN v{$this->lib_version}-->\n";
 		$html .= '<div id="CHECKFRONT_WIDGET_' . $cnf['widget_id'] . '"><p id="CHECKFRONT_LOADER" style="background: url(\'//' . $this->host . '/images/loader.gif\') left center no-repeat; padding: 5px 5px 5px 20px">' . $this->load_msg . '...</p></div><noscript><a href="https://' . $this->host . '/reserve/" style="font-size: 16px">' . $this->continue_msg . ' &raquo;</a></noscript>';
 		$html .= "\n<script type='text/javascript'>\nnew CHECKFRONT.Widget ({\n";
 		$html .= "host: '{$this->host}',\n";
 		$html .= "provider: '{$this->provider}',\n";
-		$html .= "pipe: '{$pipe}',\n";
+		$html .= "pipe: '{$this->pipe_url}',\n";
 		$html .= "target: 'CHECKFRONT_WIDGET_{$cnf['widget_id']}',\n";
 		// optional, or default items
 		if($cnf['item_id']) {
