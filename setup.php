@@ -19,12 +19,20 @@ if(isset($_POST['checkfront_host'])) {
 		update_option('checkfront_host',$host);
 		$Checkfront->host = $host;
 		$cf_msg = "Updated!";
-		$Checkfront->get_args();
 	} else {
 		$cf_msg = "Invalid URL!";
 	}
-} 
-$Checkfront->get_args();
+}
+
+$checkfront_args['view']= get_option('checkfront_view');
+$checkfront_args['theme']= get_option('checkfront_theme');
+$checkfront_args['style_background-color']= get_option('checkfront_style_background-color');
+$checkfront_args['style_color']= get_option('checkfront_style_color');
+$checkfront_args['style_font-family']= get_option('checkfront_style_font-family');
+$checkfront_args['options-tabs']= get_option('checkfront_options-tabs');
+$checkfront_args['options-compact']= get_option('checkfront_options-compact');
+$checkfront_args['shortcode']= get_option('checkfront_shortcode');
+if(!$checkfront_args['shortcode']) $checkfront_args['shortcode'] = '[checkfront]';
 ?>
 <div style="width: 800px">
 <script src="<?php print WP_PLUGIN_URL . '/' . basename(dirname(__FILE__))?>/setup.js?v=3" type="text/javascript"></script>
@@ -74,7 +82,7 @@ if(isset($cf_msg)){?>
 						<th scope="row"><label for="v2">Interface:</label></th>
 						<td>
 <input type="radio" value="v2" id="v2" name="checkfront_interface"  class="checkfront_opt_interface" <?php if($Checkfront->interface== 'v2') print 'checked="checked"';?> /> <label for="v2">2.0 (Recommended)</label> &nbsp; &nbsp; &nbsp; <input type="radio" name="checkfront_interface" id="v1" value="v1" <?php if($Checkfront->interface == 'v1') print 'checked="checked"';?> class="checkfront_opt_interface" /> <label for="v1">1.0</label> 
-</td>
+				</td>
 						<td><em></em></td>
 					</tr>
 					<tr valign="top" class="checkfront_v1" <?php if($Checkfront->interface == 'v2') print ' style="display: none"'?>>
@@ -113,31 +121,31 @@ padding: .2em 0 .2em 2em;
 				<tbody>
 					<tr valign="top">
 						<th scope="row"><a name="shortcode"></a><label for="checkfront_email">Checkfront Shortcode:</label></th>
-						<td><input  id="checkfront_shortcode" name="checkfront_shortcode" value="<?php echo stripslashes($Checkfront->args['shortcode'])?>" class="regular-text" type="text" readonly="readonly" /></td>
+						<td><input  id="checkfront_shortcode" name="checkfront_shortcode" value="<?php echo stripslashes($checkfront_args['shortcode'])?>" class="regular-text" type="text" readonly="readonly" /></td>
 						<td><em>Copy this code into a <a href="post-new.php?post_type=page">new</a> or existing page.</em></td>
 					</tr>
 					<tr valign="top" class="checkfront_v2" <?php if($Checkfront->interface == 'v1') print ' style="display: none"'?>>
 						<th scope="row"><label for="checkfront_view_D">View:</label></th>
 						<td>
-							<input type="radio" name="checkfront_view" class="checkfront_view" id="checkfront_view_D" value="D" <?php if($Checkfront->args['view'] == 'D') print ' checked="checked"'?>/> <label for="checkfront_view_D">Detail</label> &nbsp;&nbsp;&nbsp;
-							<input type="radio" name="checkfront_view" class="checkfront_view" id="checkfront_view_L" value="L" <?php if($Checkfront->args['view'] == 'L') print ' checked="checked"'?>/> <label for="checkfront_view_L">List</label>
+							<input type="radio" name="checkfront_view" class="checkfront_view" id="checkfront_view_D" value="D" <?php if($checkfront_args['view'] == 'D') print ' checked="checked"'?>/> <label for="checkfront_view_D">Detail</label> &nbsp;&nbsp;&nbsp;
+							<input type="radio" name="checkfront_view" class="checkfront_view" id="checkfront_view_L" value="L" <?php if($checkfront_args['view'] == 'L') print ' checked="checked"'?>/> <label for="checkfront_view_L">List</label>
 						</td>
 						<td><em>Detailed or list style layout</em></td>
 					</tr>
 					<tr valign="top" class="checkfront_v2" <?php if($Checkfront->interface == 'v1') print ' style="display: none"'?>>
 						<th scope="row"><label for="checkfront_style_background-color">Background Color:</label></th>
-						<td><input name="checkfront_style_background-color" id="checkfront_style_background-color" value="<?php echo $Checkfront->args['style_background-color']?>" class="regular-text" type="text"  /></td>
+						<td><input name="checkfront_style_background-color" id="checkfront_style_background-color" value="<?php echo $checkfront_args['style_background-color']?>" class="regular-text" type="text"  /></td>
 						<td><em>Optional background color: eg: #FFFFFF</em></td>
 					</tr>
 
 					<tr valign="top" class="checkfront_v2" <?php if($Checkfront->interface == 'v1') print ' style="display: none"'?>>
 						<th scope="row"><label for="checkfront_style_color">Text Color:</label></th>
-						<td><input name="checkfront_style_color" id="checkfront_style_color" value="<?php echo $Checkfront->args['style_color']?>" class="regular-text" type="text"  /></td>
+						<td><input name="checkfront_style_color" id="checkfront_style_color" value="<?php echo $checkfront_args['style_color']?>" class="regular-text" type="text"  /></td>
 						<td><em>Optional foreground color, eg: #000000</em></td>
 					</tr>
 					<tr valign="top" class="checkfront_v2" <?php if($Checkfront->interface == 'v1') print ' style="display: none"'?>>
 						<th scope="row"><label for="checkfront_style_font-family">Font Family:</label></th>
-						<td><input name="checkfront_style_font-family" id="checkfront_style_font-family" value="<?php echo $Checkfront->args['style_font-family']?>" class="regular-text" type="text"  /></td>
+						<td><input name="checkfront_style_font-family" id="checkfront_style_font-family" value="<?php echo $checkfront_args['style_font-family']?>" class="regular-text" type="text"  /></td>
 						<td><em>Optional font family, eg: Arial</em></td>
 					</tr>
 					<tr valign="top" class="checkfront_v2" <?php if($Checkfront->interface == 'v1') print ' style="display: none"'?>>
@@ -153,8 +161,8 @@ padding: .2em 0 .2em 2em;
 					<tr valign="top" <?php if($Checkfront->interface == 'v1') print ' style="display: none"'?>>
 						<th scope="row"><label for="v2">Options:</label></th>
 						<td>
-		<input type="checkbox" value="1" id="checkfront_tabs" name="checkfront_tabs"   <?php if($Checkfront->args['options-tabs']) print 'checked="checked"';?> /> <label for="checkfront_tabs">Tabs for categories</label> &nbsp; &nbsp; &nbsp; 
-		<input type="checkbox" value="1" id="checkfront_compact" name="checkfront_compact"   <?php if($Checkfront->args['options-compact']) print 'checked="checked"';?> /> <label for="checkfront_compact">Compact layout</label> &nbsp; &nbsp; &nbsp; 
+		<input type="checkbox" value="1" id="checkfront_tabs" name="checkfront_tabs"   <?php if($checkfront_args['options-tabs']) print 'checked="checked"';?> /> <label for="checkfront_tabs">Tabs for categories</label> &nbsp; &nbsp; &nbsp; 
+		<input type="checkbox" value="1" id="checkfront_compact" name="checkfront_compact"   <?php if($checkfront_args['options-compact']) print 'checked="checked"';?> /> <label for="checkfront_compact">Compact layout</label> &nbsp; &nbsp; &nbsp; 
 </td>
 						<td><em>See the <a href="http://www.checkfront.com/support/wordpress/" target="_blank">Checkfront Wordpress Setup Guide</a> for more options.</em></td>
 					</tr>

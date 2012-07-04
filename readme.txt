@@ -48,6 +48,10 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 
 == Changelog == 
 
+= 2.5.6 = 
+
+Fixed issue with IE 9, and WP paragraph formating. 
+
 = 2.5.5 = 
 Updated v2.0 Widget library.  Fixed issue with v1 droplet call. 
 

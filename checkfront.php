@@ -3,7 +3,7 @@
 Plugin Name: Checkfront Online Booking System
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects Wordpress to the Checkfront Online Booking, Reservation and Availability System.  Checkfront integrates into popular payment systems including Paypal, Authorize.net, SagePay and integrates into Salesforce, Xero and Google Apps.  Transactions, Reporting and Bookings are securly stored in the Checkfront backoffice app, while providing a self service booking portal on your own website.
-Version: 2.5.5
+Version: 2.5.6
 Author: Checkfront Inc.
 Author URI: http://www.checkfront.com/
 Copyright: 2008 - 2012 Checkfront Inc 
@@ -36,7 +36,8 @@ function checkfront_func($cnf, $content=null) {
 function checkfront($cnf) {
 	global $Checkfront;
 	if(is_page() or is_single()) {
-		return $Checkfront->render($cnf);
+		// Wordpress will try and auto format paragraphs -- remove new lines
+		return str_replace("\n",'',$Checkfront->render($cnf));
 	}
 }
 
@@ -63,41 +64,50 @@ function checkfront_setup() {
 
 // Init Checkfront, include any required js / css only when required
 function checkfront_head() { 
+
+	$embedded = 0;
+
+	$Checkfront->arg['widget'] = 0;
+
 	global $post, $Checkfront;
 	if(!isset($Checkfront->host)) return;
 	
 	// does this page have any shortcode.  If not, back out.
-	if($pos = stripos($post->post_content,'[checkfront') or $pos === 0) $Checkfront->embed = 1;
+	if($pos = stripos($post->post_content,'[checkfront') or $pos === 0) $embedded = 1;
 
 	// v1 widget
-	if($Checkfront->widget) {
+	if($Checkfront->arg['widget']) {
 		$checkfront_widget_post = get_option("checkfront_widget_post");
 		$checkfront_widget_page = get_option("checkfront_widget_page");
 		$checkfront_widget_booking  = get_option("checkfront_widget_booking");
 
-		if($Checkfront->embed and !$checkfront_widget_booking) { 
-			$Checkfront->widget = 0;
+		if($embedded and !$checkfront_widget_booking) { 
+			$Checkfront->arg['widget'] = 0;
 		} else {
-			if(is_page() and !$checkfront_widget_page) $Checkfront->widget = 0;
-			if(is_single() and !$checkfront_widget_post) $Checkfront->widget = 0;
+			if(is_page() and !$checkfront_widget_page) $Checkfront->arg['widget'] = 0;
+			if(is_single() and !$checkfront_widget_post) $Checkfront->arg['widget'] = 0;
 
 		}
 	}
 
-	if ($Checkfront->widget  or $Checkfront->embed) {
-		$Checkfront->book_url = get_option("checkfront_book_url");
-		if($Checkfront->interface == 'v1' or $Checkfront->widget) {
+	if ($Checkfront->arg['widget']  or $embedded) {
+		if($Checkfront->interface == 'v1' or $Checkfront->arg['widget']) {
 			echo ' <script src="//' . $Checkfront->host . '/www/client.js?wp" type="text/javascript"></script>' ."\n";
 			echo ' <link rel="stylesheet" href="//' . $Checkfront->host . '/www/client.css?wp" type="text/css" media="all" />' . "\n";
 		}
 
 		if($Checkfront->interface == 'v2') {
-			echo ' <script src="//' . $Checkfront->host . '/lib/interface.js?v' . $Checkfront->interface_lib_version . '" type="text/javascript"></script>' ."\n";
+			echo ' <script src="//' . $Checkfront->host . '/lib/interface--' . $Checkfront->interface_build . '.js" type="text/javascript"></script>' ."\n";
 		}
-		if($Checkfront->embed) {
+		if($embedded) {
 			// Disable Comments
 			add_filter('comments_open', 'checkfront_comments_open_filter', 10, 2);
 			add_filter('comments_template', 'checkfront_comments_template_filter', 10, 1);
+
+			//disable auto p
+			//remove_filter ('the_content', 'wpautop');
+			////disable wptexturize
+			remove_filter('the_content', 'wptexturize');
 		}
 	}
 }
@@ -121,7 +131,7 @@ function checkfront_init() {
 	# required includes
 	wp_enqueue_script('jquery'); 
 
-	$Checkfront->widget = (is_active_widget('checkfront_widget')) ? 1 : 0;
+	$Checkfront->arg['widget'] = (is_active_widget('checkfront_widget')) ? 1 : 0;
 }
 
 // Set admin meta
@@ -145,7 +155,7 @@ function checkfront_plugin_meta($links, $file) {
 // Show widget
 function checkfront_widget() {
 	global $Checkfront;
-	if(!$Checkfront->widget) return;
+	if(!$Checkfront->arg['widget']) return;
 	$checkfront_widget_title = get_option("checkfront_widget_title");
 	if(!empty($checkfront_widget_title)) echo '<h2 class="widgettitle">' . $checkfront_widget_title . '</h2>';
 	echo '<div id="CF_cal" class="' . $Checkfront->host . '"></div>';
@@ -179,7 +189,7 @@ function checkfront_widget_ctrl() {
 
 	echo '<input type="hidden" name="checkfront_update" value="1" />';	
 	echo '<ul>';
-	echo '<li><label for="checkfront_book_url">' . __('Booking Page (URL)') . ': </label><input type="text" id="checkfront_book_url" name="checkfront_book_url" value="' . $checkfront_book_url . '" /> </li>';
+	echo '<li><label for="checkfront_book_url">' . __('Internal Booking Page (URL)') . ': </label><input type="text" id="checkfront_book_url" name="checkfront_book_url" value="' . $checkfront_book_url . '" /> </li>';
 	echo '<li><label for="checkfront_widget_title">' . __('Title') . ': </label><input type="text" id="checkfront_widget_title" name="checkfront_widget_title" value="' . $checkfront_widget_title . '" /> </li>';
 	echo '<li style="color: firebrick">It is not recommended to use this with the v2 interface.</li>';
 	echo '<li><input type="checkbox" id="checkfront_widget_post" name="checkfront_widget_post" value="1"' . $checkfront_widget_post . '/><label for="checkfront_widget_post" />' . __('Show on posts') . '</li>';
