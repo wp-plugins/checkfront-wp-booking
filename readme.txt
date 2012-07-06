@@ -48,6 +48,10 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 
 == Changelog == 
 
+= 2.6 = 
+
+Updated Widget library. Increased permissions required to configure plugin.  
+
 = 2.5.6 = 
 
 Fixed issue with IE 9, and WP paragraph formating. 
@@ -94,6 +98,10 @@ Updated v2.0 Widget library.  Fixed issue with v1 droplet call.
 * Moved admin settings to plugin menu.
 
 == Upgrade Notice ==
+
+= 2.6 =
+
+Improved ssl support, v2 interface and upgraded permissions.
 
 = 2.5.5 =
 
