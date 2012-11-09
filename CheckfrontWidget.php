@@ -55,8 +55,8 @@
 class CheckfrontWidget {
 
 	public $version = '2.2';
-	public $interface = 'v1'; //v2 recommended
-	public $interface_build = '7';
+	public $interface = 'v2'; //v2 recommended
+	public $interface_build = '8';
 	public $host= '';
 	public $src = '';
 	public $plugin_url = '';

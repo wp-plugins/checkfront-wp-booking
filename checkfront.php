@@ -3,7 +3,7 @@
 Plugin Name: Checkfront Online Booking System
 Plugin URI: http://www.checkfront.com/extend/wordpress
 Description: Connects Wordpress to the Checkfront Online Booking, Reservation and Availability System.  Checkfront integrates into popular payment systems including Paypal, Authorize.net, SagePay and integrates into Salesforce, Xero and Google Apps.  Transactions, Reporting and Bookings are securly stored in the Checkfront backoffice app, while providing a self service booking portal on your own website.
-Version: 2.6
+Version: 2.6.1
 Author: Checkfront Inc.
 Author URI: http://www.checkfront.com/
 Copyright: 2008 - 2012 Checkfront Inc 
@@ -18,16 +18,15 @@ if ( ! defined( 'WP_PLUGIN_URL' ) ) define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/p
 //Shortcode [clean-conract parameter="value"]
 function checkfront_func($cnf, $content=null) {
 	$cnf=shortcode_atts(array(
-		'category_id' => '0',
-		'item_id' => '0',
+		'category_id' => '',
+		'item_id' => '',
+		'date' => '',
 		'tid' => '',
 		'discount' => '',
 		'options' => '',
 		'style' => '',
 		'width' => '',
 		'theme' => '',
-		'category_id'=>'',
-		'item_id'=>'',
 	), $cnf);
 	return checkfront($cnf);
 }
@@ -209,6 +208,7 @@ $Checkfront = new CheckfrontWidget(
 	array(
 		'host'=>get_option('checkfront_host'),
 		'pipe_url'=>WP_PLUGIN_URL . '/' . basename(dirname(__FILE__)) . '/pipe.html',
+//		'pipe_url'=>'https://www.checkfront.com/wp-content/plugins/' . basename(dirname(__FILE__)) . '/pipe.html',
 		'legacy_mode'=>get_option('checkfront_mode'),
 		'interface' =>get_option('checkfront_interface'),
 		'provider' =>'wordpress',
