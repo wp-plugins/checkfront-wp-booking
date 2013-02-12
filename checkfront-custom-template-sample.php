@@ -35,8 +35,7 @@ include_once('CheckfrontWidget.php');
 $Checkfront = new CheckfrontWidget(
 	array(
 		'host'=>'demo.checkfront.com', // your checkfront host
-		'plugin_url'=>"{$schema}://{$_SERVER['HTTP_HOST']}/wp-content/plugins/checkfront-wp-booking/",
-		'interface' =>'v2', 
+		'plugin_url'=>"/wp-content/plugins/checkfront-wp-booking/",
 		'provider' =>'wordpress'
 	)
 );
@@ -52,11 +51,12 @@ add_action('wp_head', 'checkfront_custom_head');
 
 get_header($template_name);
 
+// add extra content here
 
 echo $Checkfront->render(
 	array(
 		'options'=>'tabs,compact',
-		'style'=>'background-color: #fff; color: #000; font-family: Arial',
+		'style'=>'background-color: fff; color: 000; font-family: Arial',
 	)
 );
 

@@ -5,7 +5,7 @@ Stable tag: trunk
 Tags: Booking, Reservation, Calendar, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments, Bookings
 Requires at least: 2.0
 License: GPLv2 or later
-Tested up to: 3.4
+Tested up to: 3.5.1
 
 Combine the sleek Checkfront back-office App with the ease and publishing power of WordPress. Online Booking Management has never been so easy!
 
@@ -23,6 +23,7 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 * SSL support keeps the customer on your website while making payment.
 * Theme support allows you to tailor the look and feel of the booking portal.
 * Multi-currency, multi-gateway payment processing including Paypal and Authorize.net, and SagePay.
+* Mobile Apps for [iPhone, iPad and Android](http://www.checkfront.com/mobile) devices.
 * Further integration with [Salesforce, Zoho, Google Apps, Xero and more](http://www.checkfront.com/resources).
 * Support for short codes, or custom theme pages in Wordpress.
 
@@ -47,6 +48,12 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 2. Checkfront Dashboard
 
 == Changelog == 
+
+= 2.7 = 
+
+* Retired legacy booking interface (v1.0) -- replaced with v2.0.  
+* Updated settings page.
+* Added sidebar widget for v2.
 
 = 2.6 = 
 
