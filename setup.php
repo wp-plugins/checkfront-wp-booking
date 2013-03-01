@@ -70,7 +70,7 @@ if(isset($cf_msg)){?>
 				<tbody>
 					<tr valign="top">
 						<th scope="row"><label for="checkfront_email">Checkfront Host Url:</label></th>
-						<td nowrap>https://<input name="checkfront_host" style="width: 15em" id="CF_id" value="<?php echo $Checkfront->host?>" class="regular-text" type="text" /><br /><em style="color: #888">Eg: demo.checkfront.com</em> </td>
+						<td nowrap>https://<input name="checkfront_host" style="width: 15em;font-weight: bold" id="CF_id" value="<?php echo $Checkfront->host?>" class="regular-text" type="text" /><br /><em style="color: #888">Eg: demo.checkfront.com</em> </td>
 						<td id="CF_status"><em>Location of your Checkfront Admin</td>
 					</tr>
 					<tr>
@@ -87,7 +87,6 @@ Don't have a Checkfront account?
 			</div>
 		</div>
 	</div>
-<?php if($Checkfront->host) {?>
 		<a name="shortcode"></a>
 	<div class="metabox-holder meta-box-sortables pointer">
 		<div class="postbox">
@@ -95,6 +94,7 @@ Don't have a Checkfront account?
 			<div class="inside" style="padding: 0 10px">
 				<table class="form-table">
 				<tbody>
+<?php if($Checkfront->host) {?>
 					<tr valign="top">
 						<td scope="row" colspan="2">You can embed the Checkfront booking portal into any page by pasting in this shortcode where you'd like it to appear:</td>
 					</tr>
@@ -102,6 +102,7 @@ Don't have a Checkfront account?
 						<td scope="row" colspan="2"><strong style="font-size: 14px">[checkfront]</strong> &nbsp; &nbsp; 
 						<a  class="button-primary" href="https://<?php echo $Checkfront->host?>/manage/extend/integrate/wordpress/" value=" Update " target="_blank" id="shortcode_generator"/>Launch Shortcode Generator</a></td>
 					</tr>
+<?}?>
 					<tr><td colspan="2"><strong>Quick Setup Guide</strong> <small>3.5 minutes</small></td></tr>
 					</tr>
 									<tr><td colspan="3">
@@ -117,7 +118,6 @@ Don't have a Checkfront account?
 			</div>
 		</div>
 	</div>
-<?}?>
 </form>
 <div>
 
