@@ -49,6 +49,11 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 
 == Changelog == 
 
+= 2.7.1 = 
+
+* Moved setup to Wordpress plugin page.
+* Added setup video.
+
 = 2.7 = 
 
 * Retired legacy booking interface (v1.0) -- replaced with v2.0.  
