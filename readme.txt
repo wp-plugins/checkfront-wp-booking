@@ -111,6 +111,10 @@ Updated v2.0 Widget library.  Fixed issue with v1 droplet call.
 
 == Upgrade Notice ==
 
+= 2.7.1 =
+
+Replaced legacy interface, added new setup video.
+
 = 2.6 =
 
 Improved ssl support, v2 interface and upgraded permissions.
