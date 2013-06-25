@@ -2,30 +2,33 @@
 
 Contributors: checkfront
 Stable tag: trunk
-Tags: Booking, Reservation, Calendar, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments, Bookings
+Tags: Booking, Booking System, Reservation, Reservation System, Online Booking, Booking Engine, Tours, Tour Operator, Booking Plugin, Reservation Plugin, Booking Software, Reservation Payment System, Activity Booking, Rental Booking, Reservation Payments, Tour Booking, Passbook, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments, Bookings
 Requires at least: 2.0
 License: GPLv2 or later
-Tested up to: 3.5.1
+Tested up to: 3.4
 
-Combine the sleek Checkfront back-office App with the ease and publishing power of WordPress. Online Booking Management has never been so easy!
+The Premier Wordpress Plugin for Easy Online Booking of Tours, Activities, Rentals & More.
 
 == Description ==
 
-**Checkfront** is an [Online Booking System](http://www.checkfront.com) that allows businesses to manage their inventories, centralize reservations, and process payments. This plugin connects your Wordpress site to your Checkfront account, and provides a powerful real time booking interface within your site.
-
-Checkfront integrates seamlessly into Wordpress and does not force customers off to an external website to process bookings or view availability.  Checkfront keeps consumer data secure and separate from Wordpress.  The combined CMS features of Wordpress with the power, flexibility and security of the Checkfront back-end make for an industry leading booking management system.
-
-You can configure Checkfront to manage your inventory, packages, accept reservations and process payments.
+**Checkfront** is an [Online Booking System](http://www.checkfront.com) that allows businesses to manage their rental inventories, centralize reservations, and process online payments. This plugin connects your Wordpress site to your Checkfront account, and provides a powerful real-time booking interface - right within your existing Wordpress site.
 
 = Features include =
 
 * Display real time availability, take reservations, bookings and process payments online within your website.
 * SSL support keeps the customer on your website while making payment.
-* Theme support allows you to tailor the look and feel of the booking portal.
-* Multi-currency, multi-gateway payment processing including Paypal and Authorize.net, and SagePay.
-* Mobile Apps for [iPhone, iPad and Android](http://www.checkfront.com/mobile) devices.
-* Further integration with [Salesforce, Zoho, Google Apps, Xero and more](http://www.checkfront.com/resources).
+* Seamlessly blends in with your existing Wordpress theme design.
+* Multi-currency, multi-gateway payment processing including Paypal and Authorize.net, and SagePay & dozens more.
+* Further integration with [Salesforce, Zoho, Google Apps, Xero and many, many more](http://www.checkfront.com/resources).
 * Support for short codes, or custom theme pages in Wordpress.
+
+Checkfront integrates seamlessly into Wordpress and does not force customers off to an external website to process bookings or view availability.  Checkfront keeps consumer data secure and separate from Wordpress.  The combined CMS features of Wordpress with the power, flexibility and security of the Checkfront back-end make for an industry leading booking management system.
+
+See It In Action:
+<iframe width="532" height="299" src="http://www.youtube.com/embed/VlvzZWiAySU?rel=0" frameborder="0" allowfullscreen></iframe>
+
+You can configure Checkfront to manage your rental inventory, packages, accept reservations and process payments.
+
 
 == Installation ==
 1. Install the Checkfront Booking plugin in your Wordpress admin by going to *'Plugins / Add New'* and  searching for *'Checkfront'*,  **(or)** If doing a manual install, download the plugin and unzip into your `/wp-content/plugins/` directory. 
@@ -47,78 +50,41 @@ You can configure Checkfront to manage your inventory, packages, accept reservat
 1. Booking Interface integrated into Wordpress
 2. Checkfront Dashboard
 
-== Changelog == 
-
-= 2.7.1 = 
-
-* Moved setup to Wordpress plugin page.
-* Added setup video.
-
-= 2.7 = 
-
-* Retired legacy booking interface (v1.0) -- replaced with v2.0.  
-* Updated settings page.
-* Added sidebar widget for v2.
-
-= 2.6 = 
-
-Updated Widget library. Increased permissions required to configure plugin.  
-
-= 2.5.6 = 
-
-Fixed issue with IE 9, and WP paragraph formating. 
-
-= 2.5.5 = 
-Updated v2.0 Widget library.  Fixed issue with v1 droplet call. 
-
-= 2.5.3 = 
-  * Split out CheckfrontWidget class so it can be used on its own.  Added custom template sample.  Fixed issue with category filter.
-
-= 2.5 = 
-* Added support for v2.0 Checkout.  Includes more configuration options, improved interfaced and payment integration.
-
-= 1.5 = 
-* Removed "Online Bookings by Checkfront" link
-
-= 1.3 = 
-* Added the ability to filter booking pages by category or item id.
-* Upgraded to latest API.
-
-= 1.2 = 
-* Added sidebar widget.
-* Improved calendar navigation.
-* Better theme integration.
-
-= 1.1 = 
-* Fixed php shortcode issue.
-
-= 1.0 = 
-* Updated screenshots
-* Removed legacy invoice insert.
-
-= 0.9 =
-* Moved to new 0.9 Checkfront API
-* Now supports framed version of booking window should the theme interfere with the plugin
-* Removed search widget: search functionality has been moved to main booking interface  - will reappear in another format.
-* Improved compatibility fixes.  
-
-= 0.8 = 
-
-* Made compatible with wordpress 2.5+.  
-* No longer loads remote javascript site wide, only on an embedded booking page.
-* Improved warning messages and admin settings.
-* Moved admin settings to plugin menu.
-
 == Upgrade Notice ==
 
-= 2.7.1 =
+= 2.5.2 =
 
-Replaced legacy interface, added new setup video.
+  * Added support for v2.0 Booking Interface.  Includes more configuration options, advanced checkout, improved browser support and mode.  **IMPORTANT**: Once the update is complete, you must go to the plugin setup in Wordpress and switch from the Legacy 1.0 interface, to 2.0.
 
-= 2.6 =
-
-Improved ssl support, v2 interface and upgraded permissions.
-
-= 2.5.5 =
-
-Added support for v2.0 Booking Interface.  Includes more configuration options, advanced checkout, improved browser support and mode.  **IMPORTANT**: Once the update is complete, you must go to the plugin setup in Wordpress and switch from the Legacy 1.0 interface, to 2.0.
+== Changelog == 
+* June 27  2012*:
+  * Split out CheckfrontWidget class so it can be used on its own.  Added custom template sample.  Fixed issue with category filter.
+* June 25  2012*:
+  * Added support for v2.0 Checkout.  Includes more configuration options.
+* *May 11 2010*:
+  * Removed "Online Bookings by Checkfront" link
+* *Apr 29 2010*:
+  * Added the ability to filter booking pages by category or item id.
+  * Upgraded to latest API.
+* *Mar 21 2010*:
+  * Added sidebar widget.
+  * Improved calendar navigation.
+  * Better theme integration.
+* *Feb 28 2010*:
+  * Fixed php shortcode issue.
+* *Feb 24 2010*:
+  * Updated screenshots
+  * Removed legacy invoice insert.
+* *Feb 18 2010*:
+  * Moved to new 0.9 Checkfront API
+  * Now supports framed version of booking window should the theme interfere with the plugin
+  * Removed search widget: search functionality has been moved to main booking interface  - will reappear in another format.
+* *Nov 30 2009*: 
+ * Improved compatibility fixes.  
+* *Nov 13 2009*: 
+ * Made compatible with wordpress 2.5+.  
+ * No longer loads remote javascript site wide, only on an embedded booking page.
+ * Improved warning messages and admin settings.
+ * Moved admin settings to plugin menu.
+* *Nov 6 2009*: Updated readme, small IE fix.
+* *Nov 5 2009*: Initial public beta.
