@@ -5,7 +5,7 @@ Stable tag: trunk
 Tags: Booking, Booking System, Reservation, Reservation System, Online Booking, Booking Engine, Tours, Tour Operator, Booking Plugin, Reservation Plugin, Booking Software, Reservation Payment System, Activity Booking, Rental Booking, Reservation Payments, Tour Booking, Passbook, Availability, Online, Saas, Ajax, CRS, PMS, API, Secure, Cloud, Payments, Bookings
 Requires at least: 2.0
 License: GPLv2 or later
-Tested up to: 3.4
+Tested up to: 3.6.1
 
 The Premier Wordpress Plugin for Easy Online Booking of Tours, Activities, Rentals & More.
 
@@ -52,12 +52,16 @@ You can configure Checkfront to manage your rental inventory, packages, accept r
 
 == Upgrade Notice ==
 
-= 2.5.2 =
+= 2.9 =
 
-  * Added support for v2.0 Booking Interface.  Includes more configuration options, advanced checkout, improved browser support and mode.  **IMPORTANT**: Once the update is complete, you must go to the plugin setup in Wordpress and switch from the Legacy 1.0 interface, to 2.0.
+* Improved rendering performance and updated libraries.
 
 == Changelog == 
-* June 27  2012*:
+* September 30th 2013*:
+	
+  Added support for new interface library, updated Widget library and support for end_date shortcode.
+
+* June 27  2012 *:
   * Split out CheckfrontWidget class so it can be used on its own.  Added custom template sample.  Fixed issue with category filter.
 * June 25  2012*:
   * Added support for v2.0 Checkout.  Includes more configuration options.
