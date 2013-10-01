@@ -52,9 +52,9 @@ You can configure Checkfront to manage your rental inventory, packages, accept r
 
 == Upgrade Notice ==
 
-= 2.9 =
+= 2.9.1 =
 
-* Improved rendering performance and updated libraries.
+* Improved rendering performance and updated libraries.  Fixed issue with short tags in the admin resulting in a blank page.
 
 == Changelog == 
 * September 30th 2013*:

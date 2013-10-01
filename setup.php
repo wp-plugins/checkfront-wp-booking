@@ -102,7 +102,7 @@ Don't have a Checkfront account?
 						<td scope="row" colspan="2"><strong style="font-size: 14px">[checkfront]</strong> &nbsp; &nbsp; 
 						<a  class="button-primary" href="https://<?php echo $Checkfront->host?>/manage/extend/integrate/droplet/?src=wordpress" value=" Update " target="_blank" id="shortcode_generator"/>Launch Shortcode Generator</a></td>
 					</tr>
-<?}?>
+<?php }?>
 					<tr><td colspan="2"><strong>Quick Setup Guide</strong> <small>3.5 minutes</small></td></tr>
 					</tr>
 									<tr><td colspan="3">
