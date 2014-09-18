@@ -2,7 +2,7 @@
 if(isset($_POST['checkfront_host'])) {
 	$Checkfront->mode = $_POST['checkfront_mode'];
 	if($host = $Checkfront->valid_host($_POST['checkfront_host'])) {
-		update_option('checkfront_host',$host);
+		update_option('checkfront_host',trim($host));
 		$Checkfront->host = $host;
 		$cf_msg = "Updated!";
 	} else {
@@ -19,7 +19,6 @@ jQuery(document).ready(function() {
 	}
 
 	jQuery('#shortcode_generator').click(function() {
-
 		height = 600;
 		width = 1150;
 		var cwidth=(window.screen.width-width)/2;
@@ -30,7 +29,8 @@ jQuery(document).ready(function() {
 
 </script>
 <div style="width: 500px; float: left">
-<p>Checkfront is a powerful online booking system that allows businesses to manage their inventories, centralize reservations, and process payments. </p>
+<h1>Online Bookings For Wordpress</h1>
+<p style="font-size: 1.1em; padding-right: 2em">Checkfront is a powerful online booking system that allows businesses to manage their inventories, centralize reservations, and process payments.<br /><br /><strong>All bookings with Checkfront are <u>commission free</u>.</strong></p>
 
 <h3>Quick Start</h3>
 <ul style="font-size: 16px">
@@ -38,23 +38,24 @@ jQuery(document).ready(function() {
 <li style="padding: 5px 0; height: 25px; line-height: 25px;"><strong style="margin-right: 10px; background-color: #ccc; border-radius: 20px; clear: none; color: #000; display: inline-block; float: left; font-style: normal; height: 25px; font-weight: bold; line-height: 25px;font-size:14px; text-align: center; width: 25px;">2</strong> Supply your Checkfront URL and optional settings <a href="#checkfront_setup">below</a>.</li>
 <li style="padding: 5px 0; height: 25px; line-height: 25px;"><strong style="margin-right: 10px; background-color: #ccc; border-radius: 20px; clear: none; color: #000; display: inline-block; float: left; font-style: normal; height: 25px; font-weight: bold; line-height: 25px;font-size:14px; text-align: center; width: 25px;">3</strong> Create a new page and supply the <a href="#shortcode">short code</a> you created.</li>
 <li style="padding: 5px 0; height: 25px; line-height: 25px;"><strong style="margin-right: 10px; background-color: #ccc; border-radius: 20px; clear: none; color: #000; display: inline-block; float: left; font-style: normal; height: 25px; font-weight: bold; line-height: 25px;font-size:14px; text-align: center; width: 25px;">4</strong> Start accepting online bookings.</li>
+<li style="padding: 5px 0; height: 25px; line-height: 25px;"><strong style="margin-right: 10px; background-color: #ccc; border-radius: 20px; clear: none; color: #000; display: inline-block; float: left; font-style: normal; height: 25px; font-weight: bold; line-height: 25px;font-size:14px; text-align: center; width: 25px;">5</strong> Have questions?  <a href="https://www.checkfront.com/support/?src=wp-setup">We're here to help</a>.</li>
 </ul>
 </div>
-<div style="margin-top: 1em; float: right; width: 275px; box-shadow: 0 0 2px #ddd; border-radius: 6px; background-color: #fff; border: solid 1px #ddd; padding: 10px;">
+<div style="margin-top: 1em; float: right; width: 235px; box-shadow: 0 0 2px #ddd; border-radius: 6px; background-color: #fff; border: solid 1px #ddd; padding: 25px;">
 <div style="text-align: center">
-<a href="http://www.checkfront.com/"><img src="//www.checkfront.com/images/brand/Checkfront-Logo-45.png" height="40" alt="Checkfront" /></a><br />
+<a href="https://www.checkfront.com/?src=wp-setup"><img src="//www.checkfront.com/images/brand/Checkfront-Logo-45.png" height="40" alt="Checkfront" /></a><br />
 <strong>Smart, Simplified Online Bookings</strong><br /><br />
 </div>
 <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fcheckfront.bookings&amp;send=false&amp;layout=button_count&amp;width=250&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=132896805841" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:290px; margin-bottom: 10px; height:21px;" allowTransparency="true"></iframe>
 <!-- Place this tag in your head or just before your close body tag -->
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <!-- Place this tag where you want the +1 button to render -->
-<div class="g-plusone" data-size="small" data-annotation="inline" data-href="http://www.checkfront.com/"></div>
+<div class="g-plusone" data-size="small" data-annotation="inline" data-href="https://www.checkfront.com/?src=wp-setup"></div>
 <br />
 <br />
-<a href="http://twitter.com/Checkfront" style="background: url('https://www.checkfront.com/images/twitter.png') left center no-repeat; padding: 5px 5px 5px 20px" target="_blank">Follow us on Twitter</a><br /><br />
-<a href="http://www.checkfront.com/support/" style="background: url('https://www.checkfront.com/images/brand/Checkfront-Icon-16.png') left center no-repeat; padding: 5px 5px 5px 20px;" target="_blank">Support Library</a><br /><br />
-<a href="http://www.checkfront.com/wordpress/" style="background: url('http://s.wordpress.org/favicon.ico?3') left center no-repeat; padding: 5px 5px 5px 20px;" target="_blank">Checkfront Wordpress Setup Guide</a>
+<a href="http://twitter.com/Checkfront" style="text-decoration: none; background: url('https://www.checkfront.com/images/Twitter-icon-32.png') left center no-repeat; background-size: 16px; padding: 5px 5px 5px 20px" target="_blank">Follow us on Twitter</a><br /><br />
+<a href="https://www.checkfront.com/login/?src=wp-setup" style="text-decoration: none; background: url('https://www.checkfront.com/images/logo/Checkfront-Icon-32.png') left center no-repeat; background-size: 16px; padding: 5px 5px 5px 20px;" target="_blank">Secure Booking Admin Login</a><br /><br />
+<a href="https://www.checkfront.com/wordpress/?src=wp-setup" style="text-decoration: none; background: url('https://www.checkfront.com/images/Wordpress-icon-32.png') left center no-repeat; background-size: 18px; padding: 5px 5px 5px 20px;" target="_blank">Checkfront Wordpress Setup Guide</a>
 </div>
 <br style="clear: both" />
 <form method="post" action="">
@@ -78,7 +79,7 @@ if(isset($cf_msg)){?>
 						<input type="submit" name="submit" class="button-primary" value=" Update " /> 
 </td><td>
 Don't have a Checkfront account?
- <a href="https://www.checkfront.com/start" target="_blank">Start Your Free Trial</a></em></td>
+ <a href="https://www.checkfront.com/start?src=wp-setup" target="_blank">Start Your Free Trial</a> or get a <a href="https://www.checkfront.com/developers?src=wp-setup">Free Developer Account</a>.</em></td>
 				</td>
 					</tr>
 				</tbody>
@@ -100,21 +101,20 @@ Don't have a Checkfront account?
 					</tr>
 					<tr>
 						<td scope="row" colspan="2"><strong style="font-size: 14px">[checkfront]</strong> &nbsp; &nbsp; 
-						<a  class="button-primary" href="https://<?php echo $Checkfront->host?>/manage/extend/integrate/droplet/?src=wordpress" value=" Update " target="_blank" id="shortcode_generator"/>Launch Shortcode Generator</a></td>
+						<a  class="button-primary" href="https://<?php echo trim($Checkfront->host)?>/manage/extend/integrate/droplet/?src=wordpress" value=" Update " target="_blank" id="shortcode_generator"/>Launch Shortcode Generator</a></td>
 					</tr>
 <?php }?>
 					<tr><td colspan="2"><strong>Quick Setup Guide</strong> <small>3.5 minutes</small></td></tr>
 					</tr>
 									<tr><td colspan="3">
-<iframe style="margin-left: 1em; border: solid 1px #aaa; box-shadow: 0 0 5px #ccc" width="740" height="415" src="http://www.youtube-nocookie.com/embed/VlvzZWiAySU?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe style="margin-left: 1em; border: solid 1px #aaa; box-shadow: 0 0 5px #ccc" width="740" height="415" src="//www.youtube-nocookie.com/embed/VlvzZWiAySU?rel=0" frameborder="0" allowfullscreen></iframe>
 </td></tr>
 	<tr>
-					<td><strong>Require more help?</strong>  Please see our <a href="http://www.checkfront.com/support/wordpress">wordpress setup guide</a> in our  <a href="http://www.checkfront.com/support/">support library</a> or <a href="http://www.checkfront.com/conatct/">contact us</a> and we'd be happy to assist.</td>
+					<td><strong>Require more help?</strong>  Please see our <a href="https://www.checkfront.com/wordpress?src=wp-setup">wordpress setup guide</a> in our  <a href="https://www.checkfront.com/support/?src=wp-setup">support library</a> or <a href="https://www.checkfront.com/contact/?src=wp-setup">contact us</a> and we'd be happy to assist.</td>
 					</td>
 					</tr>
 				</tbody>
 			</table>
-
 			</div>
 		</div>
 	</div>
@@ -124,17 +124,19 @@ Don't have a Checkfront account?
 <p style="float: left; color: #555">&copy; Checkfront Inc 2008 - <?php print date('Y')?></p>
 
 <p style="float: right; color: #999">
-<a style="color: #777;  font-size: 11px" href="http://www.checkfront.com/">Learn More</a>
+<a style="color: #777;  font-size: 11px" href="https://www.checkfront.com/?src=wp-setup">Learn More</a>
 &nbsp;|&nbsp; 
-<a style="color: #777;  font-size: 11px" href="http://www.checkfront.com/updates">Recent Updates</a>
+<a style="color: #777;  font-size: 11px" href="https://www.checkfront.com/?src=wp-setup">Blog</a>
 &nbsp;|&nbsp; 
-<a style="color: #777;  font-size: 11px" href="http://www.checkfront.com/support">Support</a>
+<a style="color: #777;  font-size: 11px" href="https://www.checkfront.com/updates?src=wp-setup">Recent Updates</a>
 &nbsp;|&nbsp; 
-<a style="color: #777;  font-size: 11px" href="http://www.checkfront.com/developers">Developers</a>
+<a style="color: #777;  font-size: 11px" href="https://www.checkfront.com/support?src=wp-setup">Support</a>
 &nbsp;|&nbsp; 
-<a style="color: #777;  font-size: 11px" href="http://www.checkfront.com/privacy">Privacy</a>
+<a style="color: #777;  font-size: 11px" href="https://www.checkfront.com/developers?src=wp-setup">Developers</a>
 &nbsp;|&nbsp; 
-<a style="color: #777; font-size: 11px" href="http://www.checkfront.com/terms">Terms of Service</a> 
+<a style="color: #777;  font-size: 11px" href="https://www.checkfront.com/privacy?src=wp-setup">Privacy</a>
+&nbsp;|&nbsp; 
+<a style="color: #777; font-size: 11px" href="https://www.checkfront.com/terms?src=wp-setup">Terms of Service</a> 
 </p>
 </div>
 </div>

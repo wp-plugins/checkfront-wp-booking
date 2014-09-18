@@ -4,9 +4,9 @@
  * PHP 5 
  *
  * @package     CheckfrontWidget
- * @version     2.9
+ * @version     3.0 
  * @author      Checkfront <code@checkfront.com>
- * @copyright   2008-2013 Checkfront Inc 
+ * @copyright   2008-2014 Checkfront Inc 
  * @license     http://opensource.org/licenses/bsd-license.php New BSD License
  * @link        http://www.checkfront.com/developers/
  * @link        https://github.com/Checkfront/PHP-Widget
@@ -54,8 +54,8 @@
 
 class CheckfrontWidget {
 
-	public $version = '2.9';
-	public $interface_version = '20';
+	public $version = '3.0';
+	public $interface_version = '30';
 	public $host= '';
 	public $src = '';
 	public $plugin_url = '';
@@ -184,6 +184,8 @@ class CheckfrontWidget {
 		$cnf = array(
 			'widget_id'=>'',
 			'item_id'=>'',
+			'partner_id'=>'',
+			'lang_id'=>'',
 			'filter_category_id'=>'',
 			'category_id'=>'',
 			'theme'=>'',
@@ -225,6 +227,8 @@ class CheckfrontWidget {
 		if($cnf['theme']) $html .= "theme: '{$this->theme}',\n";
 		if($cnf['width'] and $cnf['width'] > 0)  $html .= "width: '{$cnf['width']}',\n";
 		if($cnf['layout'])  $html .= "layout: '{$cnf['layout']}',\n";
+		if($cnf['partner_id'])  $html .= "partner_id: '{$cnf['partner_id']}',\n";
+		if($cnf['lang_id'])  $html .= "lang_id: '{$cnf['lang_id']}',\n";
 		if($cnf['tid'])  $html .= "tid: '{$cnf['tid']}',\n";
 		if($cnf['options'])  $html.= "options: '{$cnf['options']}',\n";
 		if($cnf['date'])  $html.= "date: '{$cnf['date']}',\n";
