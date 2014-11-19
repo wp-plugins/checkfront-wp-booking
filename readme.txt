@@ -30,7 +30,7 @@ The Premier Wordpress Plugin for Easy Online Booking of Tours, Activities, Renta
 Checkfront integrates seamlessly into Wordpress and does not force customers off to an external website to process bookings or view availability.  Checkfront keeps consumer data secure and separate from Wordpress.  The combined CMS features of Wordpress with the power, flexibility and security of the Checkfront back-end make for an industry leading booking management system.
 
 See It In Action:
-[youtube https://www.youtube.com/watch?v=VlvzZWiAySU&rel=0]
+[vimeo http://vimeo.com/108589695]
 
 You can configure Checkfront to manage your rental inventory, packages, accept reservations and process payments.
 
@@ -68,6 +68,9 @@ You can configure Checkfront to manage your rental inventory, packages, accept r
 * You can now pass lang_id (language) and partner_id (for upcoming partner accounts) in the Checkfront shortcode.
 
 == Changelog == 
+* *November 19th 2014:*
+
+  * New walk through /setup video.
 
 * *September 10 2014*:
   * Added support for Wordpress 4.0
