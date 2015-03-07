@@ -10,7 +10,7 @@ Requires at least: 2.0
 
 License: GPLv2 or later
 
-Tested up to: 4.0
+Tested up to: 4.1.1
 
 The Premier Wordpress Plugin for Easy Online Booking of Tours, Activities, Rentals & Accommodations.
 
